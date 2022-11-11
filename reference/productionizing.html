@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productionizing</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class="active"><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Productionizing Workflows</h1>
+      
+      <p><strong>Table of Contents</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#get-seahorse-batch-workflow-executor" id="markdown-toc-get-seahorse-batch-workflow-executor">Get Seahorse Batch Workflow Executor</a>    <ul>
+      <li><a href="#use-precompiled-binaries" id="markdown-toc-use-precompiled-binaries">Use Precompiled Binaries</a></li>
+      <li><a href="#build-from-source" id="markdown-toc-build-from-source">Build from Source</a></li>
+    </ul>
+  </li>
+  <li><a href="#how-to-run-seahorse-batch-workflow-executor" id="markdown-toc-how-to-run-seahorse-batch-workflow-executor">How to Run Seahorse Batch Workflow Executor</a>    <ul>
+      <li><a href="#local-apache-spark-single-machine" id="markdown-toc-local-apache-spark-single-machine">Local Apache Spark (single machine)</a></li>
+      <li><a href="#apache-spark-standalone-cluster" id="markdown-toc-apache-spark-standalone-cluster">Apache Spark Standalone Cluster</a></li>
+      <li><a href="#yarn-cluster" id="markdown-toc-yarn-cluster">YARN Cluster</a></li>
+      <li><a href="#mesos-cluster" id="markdown-toc-mesos-cluster">Mesos Cluster</a></li>
+    </ul>
+  </li>
+  <li><a href="#custom-jdbc-drivers" id="markdown-toc-custom-jdbc-drivers">Custom JDBC Drivers</a></li>
+  <li><a href="#using-sdk" id="markdown-toc-using-sdk">Using SDK</a></li>
+  <li><a href="#seahorse-batch-workflow-executor-command-line-parameters" id="markdown-toc-seahorse-batch-workflow-executor-command-line-parameters">Seahorse Batch Workflow Executor Command Line Parameters</a>    <ul>
+      <li><a href="#command-line-parameters-details" id="markdown-toc-command-line-parameters-details">Command Line Parameters Details</a></li>
+    </ul>
+  </li>
+  <li><a href="#seahorse-batch-workflow-executor-logs" id="markdown-toc-seahorse-batch-workflow-executor-logs">Seahorse Batch Workflow Executor Logs</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>Production-ready workflows can be exported as standalone
+Apache Spark applications and executed on any cluster in a batch mode.</p>
+
+<p>Seahorse Batch Workflow Executor is an Apache Spark
+application that allows you to execute standalone workflows.
+This functionality can facilitate integration of Seahorse with other data processing systems
+and manage the execution of workflows outside of Seahorse Editor.</p>
+
+<div class="centered-container">
+  <p><img src="../img/batch_overview.png" alt="Seahorse Batch Workflow Executor Overview" class="centered-image img-responsive" />
+  <em>Seahorse Batch Workflow Executor Overview</em></p>
+</div>
+
+<h2 id="get-seahorse-batch-workflow-executor">Get Seahorse Batch Workflow Executor</h2>
+
+<p>Seahorse Batch Workflow Executor is available in a form of both precompiled binaries and source code.</p>
+
+<h4 id="use-precompiled-binaries">Use Precompiled Binaries</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Seahorse Batch Workflow Executor Version</strong></td>
+      <td><strong>Apache Spark Version</strong></td>
+      <td><strong>Scala Version</strong></td>
+      <td><strong>Link</strong></td>
+    </tr>
+    <tr>
+      <td>1.4.2</td>
+      <td>2.1.1</td>
+      <td>2.11</td>
+      <td><a target="_blank" href="https://s3.amazonaws.com/workflowexecutor/releases/1.4.2/workflowexecutor_2.11-1.4.2.jar">download</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="build-from-source">Build from Source</h4>
+
+<p>If you are interested in compiling Seahorse Batch Workflow Executor from source
+you can check out our Git repository:</p>
+
+<pre><code>git clone https://github.com/deepsense-ai/seahorse
+</code></pre>
+
+<h2 id="how-to-run-seahorse-batch-workflow-executor">How to Run Seahorse Batch Workflow Executor</h2>
+
+<p>Seahorse Batch Workflow Executor can be submitted to an Apache Spark cluster as any other Apache Spark application.
+For more detailed information about submitting Apache Spark applications visit
+<a target="_blank" href="https://spark.apache.org/docs/2.0.2/submitting-applications.html">https://spark.apache.org/docs/2.0.2/submitting-applications.html</a></p>
+
+<h4 id="local-apache-spark-single-machine">Local Apache Spark (single machine)</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Run Application Locally (on 8 cores)</span>
+./bin/spark-submit <span class="se">\</span>
+  --driver-class-path workflowexecutor.jar <span class="se">\</span>
+  --class ai.deepsense.workflowexecutor.WorkflowExecutorApp <span class="se">\</span>
+  --master <span class="nb">local</span><span class="o">[</span>8<span class="o">]</span> <span class="se">\</span>
+  --files workflow.json <span class="se">\</span>
+  workflowexecutor.jar <span class="se">\</span>
+    --workflow-filename workflow.json <span class="se">\</span>
+    --output-directory <span class="nb">test</span>-output <span class="se">\</span>
+    --custom-code-executors-path workflowexecutor.jar</code></pre></figure>
+
+<h4 id="apache-spark-standalone-cluster">Apache Spark Standalone Cluster</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Run on Apache Spark Standalone Cluster in Client Deploy Mode</span>
+./bin/spark-submit <span class="se">\</span>
+  --driver-class-path workflowexecutor.jar <span class="se">\</span>
+  --class ai.deepsense.workflowexecutor.WorkflowExecutorApp <span class="se">\</span>
+  --master spark://207.184.161.138:7077 <span class="se">\</span>
+  --files workflow.json <span class="se">\</span>
+  workflowexecutor.jar <span class="se">\</span>
+    --workflow-filename workflow.json <span class="se">\</span>
+    --output-directory <span class="nb">test</span>-output <span class="se">\</span>
+    --custom-code-executors-path workflowexecutor.jar</code></pre></figure>
+
+<h4 id="yarn-cluster">YARN Cluster</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Run on YARN Cluster</span>
+<span class="nb">export </span><span class="nv">HADOOP_CONF_DIR</span><span class="o">=</span>/opt/hadoop/etc/hadoop   <span class="c"># location of Hadoop cluster configuration directory</span>
+./bin/spark-submit <span class="se">\</span>
+  --driver-class-path workflowexecutor.jar <span class="se">\</span>
+  --class ai.deepsense.workflowexecutor.WorkflowExecutorApp <span class="se">\</span>
+  --master yarn <span class="se">\</span>
+  --deploy-mode client <span class="se">\</span>
+  --files workflow.json <span class="se">\</span>
+  workflowexecutor.jar <span class="se">\</span>
+    --workflow-filename workflow.json <span class="se">\</span>
+    --output-directory <span class="nb">test</span>-output <span class="se">\</span>
+    --custom-code-executors-path workflowexecutor.jar</code></pre></figure>
+
+<h4 id="mesos-cluster">Mesos Cluster</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Run on Mesos Cluster</span>
+<span class="nb">export </span><span class="nv">LIBPROCESS_ADVERTISE_IP</span><span class="o">={</span>user-machine-IP<span class="o">}</span>   <span class="c"># IP addres of user&#39;s machine, visible from Mesos cluster</span>
+<span class="nb">export </span><span class="nv">LIBPROCESS_IP</span><span class="o">={</span>user-machine-IP<span class="o">}</span>   <span class="c"># IP addres of user&#39;s machine, visible from Mesos cluster</span>
+./bin/spark-submit <span class="se">\</span>
+  --driver-class-path workflowexecutor.jar <span class="se">\</span>
+  --class ai.deepsense.workflowexecutor.WorkflowExecutorApp <span class="se">\</span>
+  --master mesos://207.184.161.138:5050 <span class="se">\</span>
+  --deploy-mode client <span class="se">\</span>
+  --supervise <span class="se">\</span>
+  --files workflow.json <span class="se">\</span>
+  --conf spark.executor.uri<span class="o">=</span>http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz <span class="se">\</span>
+  workflowexecutor.jar <span class="se">\</span>
+    --workflow-filename workflow.json <span class="se">\</span>
+    --output-directory <span class="nb">test</span>-output <span class="se">\</span>
+    --custom-code-executors-path workflowexecutor.jar</code></pre></figure>
+
+<p>Option <code>--custom-code-executors-path</code> is required (<code>workflowexecutor.jar</code> contains PyExecutor and RExecutor).
+Option <code>--files workflow.json</code> is necessary to distribute workflow file within the Apache Spark cluster.
+It is necessary to pass the same filename to <code>--workflow-filename workflow.json</code> option,
+in order to tell Seahorse Batch Workflow Executor under which name it should look for a workflow file.</p>
+
+<p>If <code>spark-assembly-2.0.2-hadoop2.7.0.jar</code> is already distributed
+on HDFS cluster, it is possible to reduce the time necessary for files propagation on the YARN cluster. Use the <code>spark-submit</code> option
+<code>--conf spark.yarn.jar=hdfs:///path/to/spark-assembly-2.0.2-hadoop2.7.0.jar</code>
+with a proper HDFS path.
+Apache Spark assembly jar can be found in Apache Spark 2.0.2
+compiled for Hadoop 2.7.0 package.</p>
+
+<p><strong>NOTE:</strong> Paths of files listed in the <code>--files</code> option cannot contain white or special characters.</p>
+
+<h2 id="custom-jdbc-drivers">Custom JDBC Drivers</h2>
+
+<p>To allow usage of SQL databases for
+<a href="../operations/read_dataframe.html">Read DataFrame</a>
+and
+<a href="../operations/write_dataframe.html">Write DataFrame</a>,
+a proper JDBC driver has to be accessible during workflow&#8217;s execution.
+This requirement can be satisfied by:</p>
+
+<ul>
+  <li>
+    <p>adding the JDBC jar library to cluster deployment, or</p>
+  </li>
+  <li>
+    <p>adding the JDBC jar to the driver&#8217;s classpath during <code>spark-submit</code> command (<code>--jars</code> option).</p>
+  </li>
+</ul>
+
+<p>To specify JDBC jar during execution, use <code>spark-submit</code>&#8217;s option
+<code>--driver-class-path</code>, e.g. <code>--driver-class-path "path/to/jdbc-driver1.jar:path/to/jdbc-driver2.jar:workflowexecutor.jar"</code>.
+For more information, please visit
+<a target="_blank" href="https://spark.apache.org/docs/2.0.2/configuration.html#runtime-environment">Apache Spark documentation</a>.</p>
+
+<h2 id="using-sdk">Using SDK</h2>
+
+<p>To execute workflow containing user-defined operations (see: <a href="sdk_user_guide.html">SDK User Guide</a>),
+user has to specify jars containing those operation to be accessible during workflow&#8217;s execution.
+This requirement can be satisfied by:</p>
+
+<ul>
+  <li>
+    <p>adding the SDK jar to cluster deployment, or</p>
+  </li>
+  <li>
+    <p>adding the SDK jar to the driver&#8217;s classpath during <code>spark-submit</code> command (<code>--jars</code> option).</p>
+  </li>
+</ul>
+
+<p>To specify Seahorse SDK jar during execution, use <code>spark-submit</code>&#8217;s option
+<code>--driver-class-path</code>, e.g. <code>--driver-class-path "path/to/skd1.jar:path/to/sdk2.jar:workflowexecutor.jar"</code>.
+For more information, please visit
+<a target="_blank" href="https://spark.apache.org/docs/2.0.2/configuration.html#runtime-environment">Apache Spark documentation</a>.</p>
+
+<h2 id="seahorse-batch-workflow-executor-command-line-parameters">Seahorse Batch Workflow Executor Command Line Parameters</h2>
+
+<p>Detailed information about command line parameters can be obtained by executing command:</p>
+
+<p><code>java -classpath workflowexecutor.jar ai.deepsense.workflowexecutor.WorkflowExecutorApp --help</code></p>
+
+<h4 id="command-line-parameters-details">Command Line Parameters Details</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Argument</th>
+      <th style="text-align: left">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code>-w FILENAME</code><br /><code>--workflow-filename FILENAME</code></td>
+      <td style="text-align: left">Workflow filename. If specified, workflow will be read from passed location. The file has to be accessible by the driver.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>-o DIR</code><br /><code>--output-directory DIR</code></td>
+      <td style="text-align: left">Output directory path. If specified, execution report will be saved to passed location. Directory will be created if it does not exist.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>-e:NAME=VALUE</code><br /><code>--extra-var:NAME=VALUE</code></td>
+      <td style="text-align: left">Extra variable. Sets an extra variable to a specified value. Can be specified multiple times.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>-x PATH</code><br /><code>--custom-code-executors-path PATH</code></td>
+      <td style="text-align: left">Custom code executors (included in workflowexecutor.jar) path.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>--python-binary PATH</code></td>
+      <td style="text-align: left">Python binary path.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>-t PATH</code><br /><code>--temp-dir PATH</code></td>
+      <td style="text-align: left">Temporary directory path.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>NOTE:</strong> Parameter <code>-w FILENAME</code> (or its long name) needs to be specified.</li>
+  <li><strong>NOTE:</strong> Both parameters <code>-w FILENAME</code> and <code>-o DIR</code> (or their long names) have to be specified.</li>
+  <li><strong>NOTE:</strong> When using <code>--extra-var</code> option,
+if variable name or value contains special characters (e.g. space),
+it has to be surrounded by quotation marks (“”).</li>
+</ul>
+
+<h2 id="seahorse-batch-workflow-executor-logs">Seahorse Batch Workflow Executor Logs</h2>
+
+<p>Depending on Apache Spark application deployment mode and cluster configuration, execution logs can be
+redirected to several locations, e.g.:</p>
+
+<ul>
+  <li>
+    <p>Submitter&#8217;s console (running Apache Spark locally or when deploy mode is <code>client</code>)</p>
+  </li>
+  <li>
+    <p>YARN logs directory on cluster nodes</p>
+  </li>
+  <li>
+    <p>Apache Spark logs directory on cluster nodes</p>
+  </li>
+  <li>
+    <p>HDFS directory</p>
+  </li>
+</ul>
+
+<p>For detailed information about logging with regard to your cluster configuration,
+for running Apache Spark on YARN, visit:
+<a target="_blank" href="https://spark.apache.org/docs/2.0.2/running-on-yarn.html#debugging-your-application">https://spark.apache.org/docs/2.0.2/running-on-yarn.html#debugging-your-application</a>,
+for Apache Spark Standalone cluster, visit:
+<a target="_blank" href="https://spark.apache.org/docs/2.0.2/spark-standalone.html#monitoring-and-logging">https://spark.apache.org/docs/2.0.2/spark-standalone.html#monitoring-and-logging</a>.</p>
+
+<p>For details on how Apache Spark runs on clusters, visit:
+<a target="_blank" href="https://spark.apache.org/docs/2.0.2/cluster-overview.html">https://spark.apache.org/docs/2.0.2/cluster-overview.html</a>.</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parameter Types</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/pygments-default.css">
+
+  <script src="./js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="./js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="./js/layout-setup.js"></script>
+  <script src="./js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href="."><img src="./img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href=".">Overview</a></li>
+            <li class="editor-link"><a href="./getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="./deployment.html">Deployment</a></li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="./basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="./casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="./casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="./casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="./casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="./casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="./reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="./reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="./reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="./operations.html">Operations</a></li>
+                <li class=""><a href="./reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="./reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="./reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="./reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Parameter Types</h1>
+      
+      <p>Each parameter has a name, description and a type. A type of a parameter defines what kind of value it receives (along with some validation logic).</p>
+
+<p>Each <a href="operations.html">operation</a> defines its parameters. In order for an <code>operation</code> to be executed, all its parameters have to be filled with valid values.
+There are several predefined types of parameters in Seahorse:</p>
+
+<h3 id="numeric">Numeric</h3>
+<p>Holds a single numeric value. It can specify validation rules such as a range of accepted values etc.</p>
+
+<p><strong>Example of use:</strong> number of iterations of a machine learning algorithm.</p>
+
+<p><strong>Example value:</strong> <code>100.0</code>.</p>
+
+<h3 id="multiple-numeric">Multiple Numeric</h3>
+<p>Holds multiple numeric values. It can specify validation rules such as a range of accepted values etc.</p>
+
+<p><strong>Example of use:</strong> layer sizes in a multilayer perceptron classifier</p>
+
+<p><strong>Example value:</strong> [1, 2, 3]</p>
+
+<h3 id="string">String</h3>
+<p>Holds single string value. It can be restricted by a regular expression that has to be satisfied by the input value.</p>
+
+<p><strong>Example of use:</strong> source parameter in <a href="operations/read_dataframe.html">Read DataFrame</a> operation.</p>
+
+<p><strong>Example value:</strong> <code>file:///tmp/example.csv</code>.</p>
+
+<h3 id="boolean">Boolean</h3>
+<p>Represents a simple choice - yes or no.</p>
+
+<p><strong>Example of use:</strong> should the operation that creates a <a href="classes/dataframe.html">DataFrame</a> from a CSV file extract names of columns from the first row?</p>
+
+<p><strong>Example value:</strong> <code>true</code>.</p>
+
+<h3 id="single-column-selector">Single Column Selector</h3>
+<p>Serves to specify a single column of a <code>DataFrame</code>. Column can be specified by its name or its index (starting from 0).</p>
+
+<p><strong>Example of use:</strong> column to be treated as label in supervised learning algorithm.</p>
+
+<p><strong>Example value:</strong> name: <code>"price"</code>.</p>
+
+<h3 id="multiple-column-selector">Multiple Column Selector</h3>
+<p>Serves to specify a subset of columns of a <code>DataFrame</code>. Columns can be specified by their names,
+indices (starting from 0) or types. Therefore, one selector can contain multiple names,
+index ranges and column types selections.
+All columns that meet a condition from at least one input selection will be included in the final subset of columns.
+The multiple column selector exposes additional boolean flag: <em>excluding</em>, which - if selected,
+changes selecting logic:
+the final subset contains all columns that do <em>not</em> the meet condition from any of the input selections.</p>
+
+<p><strong>Example of use:</strong> columns to be filtered in the <a href="operations/filter_columns.html">Filter Columns</a> operation.</p>
+
+<p><strong>Example value:</strong> excluding: <code>false</code>, names: {<code>"a"</code>, <code>"b"</code>}, ranges: {<code>1-5</code>, <code>10-14</code>}, types: {<code>numeric</code>, <code>boolean</code>}.</p>
+
+<h3 id="input-output-column-selector">Input Output Column Selector</h3>
+<p>Serves to specify input and output columns for an operation.</p>
+
+<p>There are two input column modes:</p>
+
+<ul>
+  <li><code>one column</code> - operate on one input column and output to one column.</li>
+  <li><code>multiple columns</code> - operate on multiple input columns and output to many columns.</li>
+</ul>
+
+<p>In both modes, input column(s) and output generation mode have to be specified.</p>
+
+<p>Available output generation modes are:</p>
+
+<ul>
+  <li><code>replace input column(s)</code> - output goes into input columns and replaces previous values.</li>
+  <li><code>append new column(s)</code> - output goes into new columns that are appended to the <code>DataFrame</code>.</li>
+</ul>
+
+<p>For <code>one column</code> input mode with <code>append new column</code> output mode, a name for the newly created column
+has to be specified.</p>
+
+<p>For <code>multiple columns</code> input mode with <code>append new columns</code> output mode, <code>column name prefix</code> for
+the newly created columns has to be specified. Every new column will have a corresponding input
+column&#8217;s name with given prefix prepended.</p>
+
+<h4 id="example-of-use">Example of Use</h4>
+
+<p>Operation <a href="operations/convert_type.html">Convert Type</a></p>
+
+<p>Input DataFrame columns: <code>a</code>, <code>b</code>, <code>c</code></p>
+
+<p>Parameters:</p>
+
+<ul>
+  <li>operate on = <code>multiple columns</code></li>
+  <li>input columns = <code>{ a, b, c }</code></li>
+  <li>output mode = <code>append new columns</code></li>
+  <li>column name prefix = <code>"converted_"</code></li>
+</ul>
+
+<p>Output DataFrame columns: <code>a</code>, <code>b</code>, <code>c</code>, <code>converted_a</code>, <code>converted_b</code>, <code>converted_c</code></p>
+
+<h3 id="single-choice">Single Choice</h3>
+<p>A parameter of this type defines a set of options. Exactly one option must be selected. Additionally, each option can have internal parameters that should be filled if this particular option is selected.</p>
+
+<p><strong>Example of use:</strong> a target type of conversion in operation converting types of columns of a <code>DataFrame</code>.</p>
+
+<p><strong>Example of use:</strong> In the <code>Read DataFrame</code> operation, the user should specify <code>data storage type</code> parameter. Some possible values of storage type are <code>FILE</code> and <code>JDBC</code>.</p>
+
+<h3 id="multiple-choice">Multiple Choice</h3>
+<p>This parameter is similar to <a href="#single-choice">single choice selector</a>, but here the user is allowed to select multiple options at once. User does not have to select any option.
+Like in a <code>single choice selector</code>, each option can have internal parameters that should be filled if this particular option is selected.</p>
+
+<p><strong>Example of use:</strong> parts of DateTime on which the selected column is to be split in the <a href="operations/decompose_datetime.html">Decompose Datetime</a> operation.</p>
+
+<h3 id="code-snippet">Code Snippet</h3>
+<p>Holds code snippet string value. Different languages (language is chosen by operation creator) can be used for syntax validation and syntax highlighting.</p>
+
+<p><strong>Example of use:</strong> code snippet parameter for Python language in <a href="operations/python_transformation.html">Python Transformation</a>.</p>
+
+<p><strong>Example value:</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">operation_main</span><span class="p">(</span><span class="n">data_frame_1</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">data_frame_1</span></code></pre></figure>
+
+<h3 id="json">JSON</h3>
+<p>This parameter holds a JSON object.</p>
+
+<p><strong>Example of use:</strong> description of the transformation in <a href="operations/create_custom_transformer.html">Create Custom Transformer</a> operation.</p>
+
+<p><strong>Example value:</strong></p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;array&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;value2&quot;</span> <span class="p">]</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="parameters-sequence">Parameters Sequence</h3>
+<p>This parameter can be used when the operation requires the user
+to specify the same group of parameters multiple times, possibly with different values.
+The parameters sequence defines an internal parameters schema.
+User can provide any number of sets of values for this schema.</p>
+
+<p><strong>Example of use:</strong> Example of use: In the <a href="operations/join.html">Join</a> operation,
+the user has to specify what columns to use in join.
+More precisely, this operation can provide any number of pairs of columns,
+each consisting of one column from left <code>DataFrame</code> and one column from the right one.</p>
+
+<p><strong>Example value:</strong> (left column = name: <code>"x"</code>, right column = index: <code>3</code>), (left column = name: <code>"y"</code>, right column = name: <code>"x"</code>).</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="./img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="./img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="./img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

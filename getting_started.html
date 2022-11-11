@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/pygments-default.css">
+
+  <script src="./js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="./js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="./js/layout-setup.js"></script>
+  <script src="./js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href="."><img src="./img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href=".">Overview</a></li>
+            <li class="active"><a href="./getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="./deployment.html">Deployment</a></li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="./basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="./casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="./casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="./casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="./casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="./casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="./reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="./reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="./reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="./operations.html">Operations</a></li>
+                <li class=""><a href="./reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="./reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="./reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="./reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Getting Started</h1>
+      
+      <p><strong>Table of Contents</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#quick-introduction" id="markdown-toc-quick-introduction">Quick Introduction</a></li>
+  <li><a href="#run-seahorse-on-your-machine" id="markdown-toc-run-seahorse-on-your-machine">Run Seahorse on Your Machine</a>    <ul>
+      <li><a href="#mac-or-windows" id="markdown-toc-mac-or-windows">Mac or Windows</a></li>
+      <li><a href="#linux" id="markdown-toc-linux">Linux</a></li>
+    </ul>
+  </li>
+  <li><a href="#use-seahorse" id="markdown-toc-use-seahorse">Use Seahorse</a>    <ul>
+      <li><a href="#create-new-workflow-and-read-your-data" id="markdown-toc-create-new-workflow-and-read-your-data">Create New Workflow and Read Your Data</a></li>
+      <li><a href="#transform-your-data" id="markdown-toc-transform-your-data">Transform Your Data</a></li>
+    </ul>
+  </li>
+  <li><a href="#learn-more" id="markdown-toc-learn-more">Learn More!</a></li>
+</ul>
+
+<h2 id="quick-introduction">Quick Introduction</h2>
+
+<p>Seahorse is a visual framework letting users create
+<a target="_blank" href="https://spark.apache.org/">Apache Spark</a> applications in a intuitive and interactive way.
+All while connected to any Spark Cluster (YARN, Mesos, Standalone) or to a bundled local Spark.</p>
+
+<p>For a more detailed overview go to the <a href="./index.html">Overview</a> section.</p>
+
+<h2 id="run-seahorse-on-your-machine">Run Seahorse on Your Machine</h2>
+
+<h4 id="mac-or-windows">Mac or Windows</h4>
+
+<p>Seahorse for Mac
+<img class="img-responsive" style="display: inline-block; width:auto; height:15px;" src="./img/os_icons/osx.png" />
+and Windows
+<img class="img-responsive" style="display: inline-block; width:auto; height:15px;" src="./img/os_icons/windows.png" />
+is distributed in the form of a Vagrant image.</p>
+
+<ol>
+  <li>Install <strong>Vagrant (required)</strong>. You can find the Vagrant installation guide at <a href="https://www.vagrantup.com/docs/installation/">vagrantup.com</a>.</li>
+  <li>Download <code>Vagrantfile</code> from the <a href="https://get-seahorse.deepsense.ai/">get Seahorse page</a>.</li>
+  <li>Go to the catalog with <code>Vagrantfile</code> and run <code>vagrant up</code> from the command line.</li>
+  <li>Go to <a target="_blank" href="http://localhost:33321">http://localhost:33321</a> and start using Seahorse!</li>
+</ol>
+
+<p>For more details and troubleshooting go to the <a href="./deployment.html#seahorse-standalone-as-a-vagrant-image">Seahorse Standalone Deployment mode page</a>.</p>
+
+<h4 id="linux">Linux</h4>
+
+<p>Seahorse for Linux
+<img class="img-responsive" style="display: inline-block; width:auto; height:15px;" src="./img/os_icons/linux.png" />
+is distributed in the form of docker images.</p>
+
+<ol>
+  <li>Install <strong>Docker (required)</strong> and <strong>docker-compose (required)</strong>. You can find the Docker installation guide at <a href="https://docs.docker.com/engine/installation/">docs.docker.com/engine</a>
+  and the docker-compose installation guide at <a href="https://docs.docker.com/compose/install/">docs.docker.com/compose</a>.</li>
+  <li>Download <code>docker-compose.yml</code> from the <a href="https://get-seahorse.deepsense.ai/">get Seahorse page</a>.</li>
+  <li>Go to the catalog with <code>docker-compose.yml</code> file and run <code>docker-compose up</code> from the command line.</li>
+  <li>Go to <a target="_blank" href="http://localhost:33321">http://localhost:33321</a> and start using Seahorse!</li>
+</ol>
+
+<p>For more details and troubleshooting go to <a href="./deployment.html#dockerized-seahorse">Seahorse Deployment page</a>.</p>
+
+<h2 id="use-seahorse">Use Seahorse</h2>
+
+<p>In the following steps we will read some data.
+Then we will apply a simple transformation to the data.</p>
+
+<h4 id="create-new-workflow-and-read-your-data">Create New Workflow and Read Your Data</h4>
+
+<ul>
+  <li>Run Seahorse on your machine and go to <a target="_blank" href="http://localhost:33321">http://localhost:33321</a>.</li>
+</ul>
+
+<div class="align-left">
+    <div class="img-responsive image-with-caption-container" style="width: 700px">
+        <img class="img-responsive bordered-image" src="./img/seahorse_main.png" />
+        <em>The Seahorse home screen is a list of all workflows - initially filled with examples.</em>
+    </div>
+</div>
+
+<ul>
+  <li>Create a new workflow using the <strong>New Workflow</strong> button. Workflow Editor will start.</li>
+</ul>
+
+<div class="align-left">
+    <div class="img-responsive image-with-caption-container" style="width: 700px">
+        <img class="img-responsive bordered-image" src="./img/getting_started/editor_empty_workflow.png" />
+        <em>Workflow Editor</em>
+    </div>
+</div>
+
+<ul>
+  <li>
+    <p>Start editing by clicking
+<img class="img-responsive" style="display: inline-block; width:auto; height:15px;" src="./img/getting_started/start_editing.png" />
+from the top menu. It will start up an Apache Spark backend for your workflow session.</p>
+  </li>
+  <li>Read some data into Seahorse:
+    <ul>
+      <li>Drag and drop a <code>Node</code> from the toolbox on the left to the canvas, or just right-click on the canvas.</li>
+      <li>Select <code>Input/Output</code> &gt; <code>Read DataFrame</code> from the operation selector.</li>
+      <li>Click on the created <code>Read Dataframe</code>. You can set its parameters on the right-hand side panel.
+Select the <code>transactions.csv</code> data source.</li>
+    </ul>
+  </li>
+  <li>Run the operation by clicking the
+<img class="img-responsive" style="display: inline-block; width:auto; height:15px;" src="./img/getting_started/run.png" />
+button from the top menu.</li>
+  <li>Click <img class="img-responsive" style="display: inline-block; width:auto; height:15px;" src="./img/getting_started/report_icon.png" />
+on the operation node to preview Dataframe.</li>
+</ul>
+
+<div class="align-left">
+    <div class="img-responsive image-with-caption-container" style="width: 600px">
+        <img class="img-responsive bordered-image" src="./img/getting_started/transactions_sample.png" />
+        <em>DataFrame Report opened after clicking report icon</em>
+    </div>
+</div>
+
+<h4 id="transform-your-data">Transform Your Data</h4>
+
+<p>In the next step you will apply a simple transformation to your data.</p>
+
+<ul>
+  <li>Drag an edge from the output port of the <code>Read DataFrame</code>.</li>
+  <li>Select <code>Filter Columns</code> operation from the operation selector.</li>
+</ul>
+
+<p><img class="align-left img-responsive" style="width:250px; height:auto" src="./img/getting_started/dragging_dataframe.png" /></p>
+
+<ul>
+  <li>Set <code>selected column</code> parameter of <code>Filter Columns</code> to some set of columns of your choice.</li>
+  <li>Run your workflow again and view the transformed Dataframe produced by <code>Filter Columns</code>!</li>
+</ul>
+
+<div class="align-left">
+    <div class="img-responsive image-with-caption-container" style="width: 600px">
+        <img class="img-responsive bordered-image" src="./img/getting_started/transactions_sample_after_filtering.png" />
+        <em>DataFrame Report with filtered columns</em>
+    </div>
+</div>
+
+<p>Congratulations! You have successfully created your first Seahorse workflow.</p>
+
+<h2 id="learn-more">Learn More!</h2>
+
+<ul>
+  <li>Check out the <a href="./basic_examples.html">basic examples</a> or <a href="./casestudies/income_predicting.html">some of the more advanced use cases</a></li>
+  <li>Check out <a href="./operations.html">a full operation list with a documentation</a>.</li>
+</ul>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="./img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="./img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="./img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

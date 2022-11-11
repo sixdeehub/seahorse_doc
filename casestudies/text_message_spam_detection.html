@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Message Spam Detection</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class="active"><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Text Message Spam Detection</h1>
+      
+      <h2 id="basic-information">Basic Information</h2>
+
+<p><strong>Dataset</strong>: <a target="_blank" href="http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection">SMS Spam Collection Data Set</a>.</p>
+
+<p><strong>Dataset size and schema</strong>: 5,574 rows, 2 string columns.</p>
+
+<p><strong>Dataset description</strong>: A single file containing short texts along with correct binary
+categorization (spam or ham). Strongly biased toward the ham class (~87%).</p>
+
+<p><strong>Business purpose</strong>: Reducing the amount of text message spam in cellular networks.</p>
+
+<p><strong>Dataset credits</strong>: Lichman, M. (2013). UCI Machine Learning Repository
+<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and
+Computer Science.</p>
+
+<h2 id="step-by-step-workflow-creation">Step-by-step Workflow Creation</h2>
+
+<h3 id="reading-the-data">Reading the Data</h3>
+
+<p>The data is provided in a form of 2-column, tab-separated CSV file. For convenience, at the top of
+the file we add a row with names of the columns: <strong>class</strong> and <strong>text</strong> separated with a Tab. Using
+the <a href="../operations/read_dataframe.html">Read Data Frame</a> operation  and Data Source with <code>CSV</code> format and
+<code>Tab</code> selected as a <code>column separator</code>, we are able to pull the data into Seahorse. Let’s take a
+look at the sample by clicking the report icon that appeared after running this single-node workflow.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/text_message_spam_detection/image_0.png" /></p>
+
+<p>We can see the distribution of the class column by clicking on a graph icon in its header. This tells us that there
+are more “good” messages than spam, which in turn leads to the conclusion that the trivial
+classifier that always returns “not spam” can serve as our baseline to which we can later compare
+our model.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/text_message_spam_detection/image_1.png" /></p>
+
+<p>Now we need to do some preprocessing before this data is usable in any classifier.</p>
+
+<h3 id="data-preprocessing">Data Preprocessing</h3>
+
+<p>We will use a <a href="../operations/string_indexer.html">String Indexer</a> and
+a <a href="../operations/tokenize_with_regex.html">Tokenize with Regex</a> operations to transform
+the data into a more usable form. The String Indexer will replace words <code>ham</code> and <code>spam</code> with <code>0</code>
+and <code>1</code> values, and the Tokenize with Regex will allow us to transform the messages into  separate
+words. We will use the <code>[a-zA-Z]+</code> regex pattern for the Tokenizer. We also set the <code>gaps</code> parameter
+to <code>false</code> to indicate that the pattern describes the actual tokens, and not the gaps between them.
+Afterwards, we use a <a href="../operations/remove_stop_words.html">Remove Stop Words</a> operation
+in order to filter out the most common stop words.</p>
+
+<p>The preprocessing part of our workflow looks like this:</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/text_message_spam_detection/image_2.png" /></p>
+
+<h3 id="training-and-test-datasets">Training and Test Datasets</h3>
+
+<p>The next step is to <a href="../operations/split.html">Split</a> our data into two parts - the data
+that we’ll use to train our model and the data on which our model will be tested. We use a <code>0.7</code>
+<code>split ratio</code> which means, that 70% of the data will be used for training.</p>
+
+<h3 id="training-the-model">Training the Model</h3>
+<div style="overflow: auto">
+<img style="float:right; margin-left:20px" class="centered-image img-responsive spacer" src="../img/usecases/text_message_spam_detection/image_3.png" />
+
+<p>
+The first thing to do here is to change the representation of the text column. Instead of an array
+of words, we’d like a vector of <code>0</code> and <code>1</code>, where each column represents
+whether a specific word appears in the corresponding message. That’s exactly what a
+<a href="../operations/count_vectorizer.html">Count Vectorizer</a> is for: it creates a
+dictionary of words from the entire dataset (each word is mapped to a number) and for each row it
+creates a vector in which column N is set to <code>1</code> if the word N appears in the text
+message. Aside from setting the name of the output column, let’s leave its parameters as they are by
+default. In particular, <code>Min Different Documents</code> should be <code>1</code>. We are using
+the Count Vectorizer operation after splitting the dataset in order to avoid test dataset knowledge
+leaking into our model.
+</p>
+<p>
+Now, we can do the actual training. We need to use a
+<a href="../operations/fit.html">Fit</a> operation in order to train a
+<a href="../operations/logistic_regression.html">Logistic Regression</a> classifier on our
+data.
+</p>
+<p>
+That’s it - coming out of the Fit is our trained model. We can apply it to the test part of the
+dataset and find out how accurate it is.
+</p>
+</div>
+
+<h3 id="testing-and-evaluating-the-model">Testing and Evaluating the Model</h3>
+
+<p>Since we split our data only after some preprocessing, all we need to do, in order to test our
+model, is to transform it with the transformer created by the Count Vectorizer operation and then
+with the Logistic Regression model.</p>
+
+<p>Afterwards, all that’s left to do is to evaluate our model.
+This can be done either by manually implementing a simple accuracy metric with a
+<a href="../operations/python_transformation.html">Python Transformation</a>,
+or using available evaluation tools like a
+<a href="../operations/binary_classification_evaluator.html">Binary Classification Evaluator</a>,
+which provides two metrics: <code>Area under ROC</code> and <code>Area under PR</code>. However, we suggest using accuracy
+here since it is an intuitive metric with simple interpretation: it just counts the number of
+correctly classified messages.</p>
+
+<div style="overflow: auto">
+<img style="float:right; margin-left:20px" class="centered-image img-responsive" src="../img/usecases/text_message_spam_detection/image_4.png" />
+<p>
+A simple Python Transformation with the following code produces a human-readable table.
+</p>
+<p>
+Further exploration of the resulting DataFrame with a
+<a href="../operations/python_notebook.html">Python Notebook</a> yields the messages that were
+incorrectly classified by our model. It’s a good starting point for the process of improving our
+model.
+</p>
+</div>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/text_message_spam_detection/image_5.png" /></p>
+
+<p>And here is the entire workflow. The accuracy of the final model on the test dataset is above 97%,
+which compared to the baseline (the naive model always returning “ham”) of 87% is a big improvement.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/text_message_spam_detection/image_6.png" /></p>
+
+<h2 id="further-experiments">Further Experiments</h2>
+
+<p>Now that we have the full workflow, we are free to experiment a bit with algorithms&#8217; parameters.
+For example, we could change <code>Min Different Documents</code> in the Count Vectorizer to include only words
+appearing in more than a single text message. Another idea is to tweak the regex in the Tokenize
+with Regex - maybe it should simply be replaced with a Tokenize operation? Maybe we could change
+the Logistic Regression parameters or even use a completely different classification algorithm?</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

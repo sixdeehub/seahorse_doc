@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card Client Defaults</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class="active"><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Credit Card Client Defaults</h1>
+      
+      <h2 id="basic-information">Basic Information</h2>
+
+<p><strong>Dataset</strong>: <a target="_blank" href="http://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients">Default of credit card clients Data Set</a></p>
+
+<p><strong>Dataset size</strong>: 30,000 rows; 25 columns (11 integer colums, 14 numerical columns)</p>
+
+<p><strong>Datasets description</strong>: The dataset contains a description of customers of a bank along with information on their loan status.</p>
+
+<p><strong>Business purpose</strong>: Determining the probability of default among credit card clients</p>
+
+<p><strong>Data set credits</strong>: I-Cheng Yeh</p>
+
+<p>Department of Information Management, Chung Hua University, Taiwan;
+Department of Civil Engineering, Tamkang University, Taiwan.</p>
+
+<p>UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science.</p>
+
+<h2 id="step-by-step-workflow-creation">Step-by-step Workflow Creation</h2>
+
+<h3 id="reading-data">Reading Data</h3>
+
+<p>The data is provided in a form of a 25-column, comma-separated CSV-like file with column names in the first line.
+To work with the dataset, it has to be loaded into Seahorse. This can be done by a
+<a href="../operations/read_dataframe.html">Read DataFrame</a> operation.
+Let’s place it on the canvas using drag-and-drop from the operations palette.
+To load the data, we need to provide the correct path to the file.</p>
+
+<p>Just click on the Read DataFrame operation on the canvas. Now, in panel on the right click &#8220;Select data source&#8221;.
+Create &#8220;External file&#8221; data source and fill its &#8220;Source&#8221; parameter:</p>
+
+<p><strong>SOURCE</strong>: <a target="_blank" href="https://s3.amazonaws.com/workflowexecutor/examples/data/credit_defaults.csv">https://s3.amazonaws.com/workflowexecutor/examples/data/credit_defaults.csv</a></p>
+
+<p>Name it, e.g. &#8220;Credit card data&#8221;, click &#8220;Ok&#8221; and select your newly created data source.
+Having loaded the data, we proceed to its initial exploration.
+To this end, let’s use the <a href="../operations/r_notebook.html">R Notebook</a> block from Seahorse’s operations palette.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/credit_defaults/r_notebook_block.png" /></p>
+
+<p>We open the Jupyter Notebook, and start exploring the data. With the use of the <code>dataframe()</code> function we are able to connect
+to data on the Spark cluster and operate on it. We can invoke it like this:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r">df <span class="o">&lt;-</span> dataframe<span class="p">()</span></code></pre></figure>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/credit_defaults/r_notebook_inside.png" /></p>
+
+<p>Some of the variables are categorical, for example, Education. In fact, reviewing the dataset documentation, we find that it is
+an ordinal variable where 0 and 6 denote the lowest and the highest education levels, respectively. In the notebook, after printing
+out the first three lines of data (the <code>head()</code> command), we performed an exemplary query for grouping the response variable with respect
+to the education levels and compute fraction of defaults within groups. We observe some variability in default fraction with respect
+to education. Moreover, some of the categories are rare. In total, across all customers, the default fraction is equal about 22%.</p>
+
+<p>Note the use of <code>collect()</code> functions here. This is a Spark-specific operation - it invokes the computation of an appropriate command
+and returns results to the driver node in a Spark application (in particular, it can be your desktop).</p>
+
+<h3 id="data-transformation">Data Transformation</h3>
+
+<p>For later analysis we will drop the ID variable as it is irrelevant for prediction. We also see that there are relatively few occurrences
+of extreme values of the Education variable: 0 and 6 which denote the lowest and highest education levels. Our decision is to decrease
+the granularity of this variable and truncate its values to range [1, 5]. This can be achieved by a custom R Column Transformation as shown below.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/credit_defaults/r_coltrans_code.png" /></p>
+
+<p>Along with the Education variable, there are also other categorical variables in the dataset like marital status or payment statuses.
+We will not employ any special preprocessing for them since the model that we plan to use - Random Forest model - is relatively insensitive
+to encoding of categorical variables. Since most of the categories are ordinal, encoding them with consecutive integers is actually
+a natural choice here. For some other methods, like the logistic regression model, we would need to handle categorical data in a special way,
+for example, using <a href="../operations/one_hot_encoder.html">One Hot Encoder</a>.</p>
+
+<h3 id="model-training">Model Training</h3>
+
+<p>At this point we are ready to train a model. Let’s use the introduced Random Forest classifier, an off-the-shelf trees ensemble machine learning model.
+We devote 2/3 of data for tuning the model’s parameters - the number of trees in the forest and depth of a single tree - by
+<a href="../operations/grid_search.html">Grid Search</a> operation available on the palette. The other part of the data will be used for the final model
+evaluation. Since the distribution of the target variable is slightly imbalanced toward “good” labels - about 78% customers in database paid
+their dues - we will use <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve">Area Under ROC</a>
+as the evaluation metric. This metric is applicable when one class (label) dominates the other.
+It is more sensitive to retrieval of defaults in data <a href="https://www.quora.com/Why-is-it-that-I-get-a-better-accuracy-score-when-using-unbalanced-classes-with-a-Random-Forest-classifier">than accuracy score</a>
+(that is, the number of correctly classified instances regardless of their actual class).</p>
+
+<p>For demonstration purposes, we varied the parameters of on a relatively small grid: 20, 40 for the number of trees in the forest
+and 5, 10, 20 for a tree depth. The results of the grid search are presented below:</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/credit_defaults/grid_search_results.png" /></p>
+
+<p>We see that the optimal values for the number of trees and a tree depth are 40 and 10, respectively. Since there is little difference
+between choosing 20 or 40 as the number of trees, we will stick with the smaller forest consisting of 20 trees as our final model.</p>
+
+<h3 id="verifying-model-effectiveness-on-test-data">Verifying Model Effectiveness On Test Data</h3>
+
+<p>Finally, we evaluate the model on the remaining 1/3 part of data. It achieves a score of 0.779738 AUC on this hold-out dataset.
+This means that our model learned reasonably well to distinguish between default and non-default customers. For the sake of more interpretable results,
+the confusion matrix may be helpful. In order to compute it, we will create another R notebook and attach it to the final data with computed predictions.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/credit_defaults/confusion_matrix_notebook.png" /></p>
+
+<p>The confusion matrix is computed by retrieving two columns from the data frame and aggregating them. This is done again using the <code>collect()</code> function.
+Here, it fetches two selected columns to the driver node. Such operations should be performed with care - the result needs to fit into
+the driver node’s RAM. Here, we only retrieved two columns and there are merely 30K rows in dataset so the operation succeeds. For larger datasets,
+we would order the computations to be performed by Spark. Finally, observe that we explicitly called the <code>table()</code> function from R’s base package
+via <code>base::table()</code>. This is necessary since the R native function is <a href="https://spark.apache.org/docs/1.6.0/sparkr.html#r-function-name-conflicts">masked once SparkR is loaded</a>.</p>
+
+<p>Let’s proceed to the analysis of the confusion matrix. For example, its bottom left entry denotes that in 377 cases the model
+falsely predicted default while in fact there wasn’t one. Based on this matrix we may compute so-called precision and recall statistics.
+Precision is the fraction of correct predictions (true positives) out of all predicted defaults by our model. Recall is defined as
+the fraction of correctly predicted defaults divided by the total number of defaults in data. In our application, precision and recall
+and are equal about 67% and 37%, respectively.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>We presented analysis of prediction of defaults of a bank’s customers. Throughout the way, we used SparkR for custom operations
+and exploratory data analysis. We trained the model, optimized and evaluated it. Based on costs associated with customers’ defaults,
+we can tweak precision and recall by, for example, adjusting the threshold level for probability of the default prediction and the
+final label (no default vs default) produced by the model. We encourage you to try out your own ideas - the complete workflow is included in Seahorse.</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

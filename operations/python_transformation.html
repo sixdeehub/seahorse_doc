@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Transformation</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+  <script src="../js/search.js"></script>
+<div class="col-md-12 sidemenu-container">
+  <ul class="sidemenu lvl-1">
+    <li>
+      <form class="text-center search-form">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        <input id="search" type="search" name="search">
+      </form>
+    </li>
+    <li class="menu-group"><a><strong>Input/Output</strong></a>
+      <ul class="lvl-2">
+        <li><a href="../operations/python_notebook.html">Python Notebook</a></li>
+        <li><a href="../operations/r_notebook.html">R Notebook</a></li>
+        <li><a href="../operations/read_dataframe.html">Read DataFrame</a></li>
+        <li><a href="../operations/read_transformer.html">Read Transformer</a></li>
+        <li><a href="../operations/write_dataframe.html">Write DataFrame</a></li>
+        <li><a href="../operations/write_transformer.html">Write Transformer</a></li>
+      </ul>
+    </li>
+    <li class="menu-group"><a><strong>Action</strong></a>
+      <ul class="lvl-2">
+        <li><a href="../operations/evaluate.html">Evaluate</a></li>
+        <li><a href="../operations/fit.html">Fit</a></li>
+        <li><a href="../operations/fit_plus_transform.html">Fit + Transform</a></li>
+        <li><a href="../operations/transform.html">Transform</a></li>
+      </ul>
+    </li>
+    <li class="menu-group"><a><strong>Set Operation</strong></a>
+      <ul class="lvl-2">
+        <li><a href="../operations/join.html">Join</a></li>
+        <li><a href="../operations/split.html">Split</a></li>
+        <li><a href="../operations/union.html">Union</a></li>
+        <li><a href="../operations/sort.html">Sort</a></li>
+        <li><a href="../operations/sql_combine.html">SQL Combine</a></li>
+      </ul>
+    </li>
+    <li class="menu-group"><a><strong>Filtering</strong></a>
+      <ul class="lvl-2">
+        <li><a href="../operations/filter_columns.html">Filter Columns</a></li>
+        <li><a href="../operations/filter_rows.html">Filter Rows</a></li>
+        <li><a href="../operations/handle_missing_values.html">Handle Missing Values</a></li>
+        <li><a href="../operations/projection.html">Projection</a></li>
+      </ul>
+    </li>
+    <li class="menu-group"><a><strong>Transformation</strong></a>
+      <ul class="lvl-2">
+        <li class="menu-group"><a>Custom</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/create_custom_transformer.html">Create Custom Transformer</a></li>
+            <li class="menu-group"><a>SQL</a>
+              <ul class="lvl-4">
+                <li><a href="../operations/sql_column_transformation.html">SQL Column Transformation</a></li>
+                <li><a href="../operations/sql_transformation.html">SQL Transformation</a></li>
+              </ul>
+            </li>
+            <li class="menu-group"><a>Python</a>
+              <ul class="lvl-4">
+                <li><a href="../operations/python_column_transformation.html">Python Column Transformation</a></li>
+                <li><a href="../operations/python_transformation.html">Python Transformation</a></li>
+              </ul>
+            </li>
+            <li class="menu-group"><a>R</a>
+              <ul class="lvl-4">
+                <li><a href="../operations/r_column_transformation.html">R Column Transformation</a></li>
+                <li><a href="../operations/r_transformation.html">R Transformation</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Feature Conversion</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/assemble_vector.html">Assemble Vector</a></li>
+            <li><a href="../operations/binarize.html">Binarize</a></li>
+            <li><a href="../operations/compose_datetime.html">Compose Datetime</a></li>
+            <li><a href="../operations/convert_type.html">Convert Type</a></li>
+            <li><a href="../operations/dct.html">DCT</a></li>
+            <li><a href="../operations/decompose_datetime.html">Decompose Datetime</a></li>
+            <li><a href="../operations/get_from_vector.html">Get From Vector</a></li>
+            <li><a href="../operations/normalize.html">Normalize</a></li>
+            <li><a href="../operations/one_hot_encoder.html">One Hot Encoder</a></li>
+            <li><a href="../operations/polynomial_expansion.html">Polynomial Expansion</a></li>
+            <li><a href="../operations/quantile_discretizer.html">Quantile Discretizer</a></li>
+            <li><a href="../operations/string_indexer.html">String Indexer</a></li>
+            <li><a href="../operations/vector_indexer.html">Vector Indexer</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Feature Scaling</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/min-max_scaler.html">Min-Max Scaler</a></li>
+            <li><a href="../operations/standard_scaler.html">Standard Scaler</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Text Processing</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/convert_to_n-grams.html">Convert to n-grams</a></li>
+            <li><a href="../operations/count_vectorizer.html">Count Vectorizer</a></li>
+            <li><a href="../operations/hashingtf.html">HashingTF</a></li>
+            <li><a href="../operations/idf.html">IDF</a></li>
+            <li><a href="../operations/remove_stop_words.html">Remove Stop Words</a></li>
+            <li><a href="../operations/tokenize.html">Tokenize</a></li>
+            <li><a href="../operations/tokenize_with_regex.html">Tokenize with Regex</a></li>
+            <li><a href="../operations/word2vec.html">Word2Vec</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-group"><a><strong>Machine Learning</strong></a>
+      <ul class="lvl-2">
+        <li class="menu-group"><a>Hyper Optimization</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/grid_search.html">Grid Search</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Regression</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/aft_survival_regression.html">AFT Survival Regression</a></li>
+            <li><a href="../operations/decision_tree_regression.html">Decision Tree Regression</a></li>
+            <li><a href="../operations/gbt_regression.html">GBT Regression</a></li>
+            <li><a href="../operations/isotonic_regression.html">Isotonic Regression</a></li>
+            <li><a href="../operations/linear_regression.html">Linear Regression</a></li>
+            <li><a href="../operations/random_forest_regression.html">Random Forest Regression</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Classification</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/decision_tree_classifier.html">Decision Tree Classifier</a></li>
+            <li><a href="../operations/gbt_classifier.html">GBT Classifier</a></li>
+            <li><a href="../operations/logistic_regression.html">Logistic Regression</a></li>
+            <li><a href="../operations/multilayer_perceptron_classifier.html">Multilayer Perceptron Classifier</a></li>
+            <li><a href="../operations/naive_bayes.html">Naive Bayes</a></li>
+            <li><a href="../operations/random_forest_classifier.html">Random Forest Classifier</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Clustering</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/k-means.html">K-Means</a></li>
+            <li><a href="../operations/lda.html">LDA</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Feature Selection</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/chi-squared_selector.html">Chi-Squared Selector</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Recommendation</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/als.html">ALS</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Dimensionality Reduction</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/pca.html">PCA</a></li>
+          </ul>
+        </li>
+        <li class="menu-group"><a>Model Evaluation</a>
+          <ul class="lvl-3">
+            <li><a href="../operations/python_evaluator.html">Python Evaluator</a></li>
+            <li><a href="../operations/r_evaluator.html">R Evaluator</a></li>
+            <li><a href="../operations/binary_classification_evaluator.html">Binary Classification Evaluator</a></li>
+            <li><a href="../operations/multiclass_classification_evaluator.html">Multiclass Classification Evaluator</a></li>
+            <li><a href="../operations/regression_evaluator.html">Regression Evaluator</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Python Transformation</h1>
+      
+      <p>Executes a Python function provided by the user on a <a href="../classes/dataframe.html">DataFrame</a> connected to its input port.
+Returns the results of the execution as a <code>DataFrame</code>.</p>
+
+<p>Also returns a <a href="../classes/transformer.html">Transformer</a> that can be later applied
+to another <code>DataFrame</code> with a <a href="transform.html">Transform</a> operation.</p>
+
+<p>The Python function that will be executed must:</p>
+
+<ul>
+  <li>
+    <p>be named <code>transform</code>,</p>
+  </li>
+  <li>
+    <p>take exactly one argument of type <code>DataFrame</code>,</p>
+  </li>
+  <li>
+    <p>return a <code>DataFrame</code> (or data which can be automatically converted to Spark <code>DataFrame</code>:
+pandas.DataFrame, single value, tuple/list of single values, tuple/list of tuples/lists of single values).</p>
+  </li>
+</ul>
+
+<p>The variables and functions available in the operations’ global scope:</p>
+
+<ul>
+  <li>
+    <p><code>dataframe()</code> - a function that returns the input <code>DataFrame</code> for this operation.
+Everytime the input <code>DataFrame</code> changes, the <code>dataframe()</code> returns the updated <code>DataFrame</code>.</p>
+  </li>
+  <li>
+    <p><code>sc</code> - Spark Context</p>
+  </li>
+  <li>
+    <p><code>spark</code> - Spark Session</p>
+  </li>
+  <li>
+    <p><code>sqlContext</code> - SQL Context</p>
+  </li>
+</ul>
+
+<h4 id="example-python-code">Example Python code:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">Row</span>
+
+<span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">Row</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">numbers_column</span><span class="o">*</span><span class="mi">2</span><span class="p">)))</span></code></pre></figure>
+
+<p><strong>Since</strong>: Seahorse 1.0.0</p>
+
+<h2 id="input">Input</h2>
+
+<table>
+<thead>
+<tr>
+<th style="width:15%">Port</th>
+<th style="width:15%">Type Qualifier</th>
+<th style="width:70%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code><a href="../classes/dataframe.html">DataFrame</a></code></td>
+<td>The <code>DataFrame</code> that will be passed to the <code>transform</code> function.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="output">Output</h2>
+
+<table>
+<thead>
+<tr>
+<th style="width:15%">Port</th>
+<th style="width:15%">Type Qualifier</th>
+<th style="width:70%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code><a href="../classes/dataframe.html">DataFrame</a></code></td>
+<td>The return value of the <code>transform</code> function.</td>
+</tr>
+<tr>
+<td><code>1</code></td><td>
+<code><a href="../classes/transformer.html">Transformer</a></code></td>
+<td><code>Transformer</code> that allows to apply the operation on another <code>DataFrames</code> using
+<a href="transform.html">Transform</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="parameters">Parameters</h2>
+
+<table class="table">
+<thead>
+<tr>
+<th style="width:15%">Name</th>
+<th style="width:15%">Type</th>
+<th style="width:70%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code><a href="../parameter_types.html#code-snippet">Code Snippet</a></code></td>
+<td>The Python code to be executed. It has to contain a Python function complying to signature
+presented in the operation's description.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="example">Example</h2>
+
+<h3 id="parameters">Parameters</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width:20%">Name</th>
+      <th style="width:80%">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>code</code></td>
+    <td><pre>def transform(df):
+    return df.filter(df.temp &gt; 0.4).sort(df.windspeed, ascending=False)</pre></td>
+  </tr>
+  </tbody>
+</table>
+
+<h3 id="input">Input</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>datetime</th>
+      <th>windspeed</th>
+      <th>hum</th>
+      <th>temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2011-01-03 21:00:00.0</td>
+      <td>0.1045</td>
+      <td>0.47</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>2011-01-03 22:00:00.0</td>
+      <td>0.1343</td>
+      <td>0.64</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <td>2011-01-03 23:00:00.0</td>
+      <td>0.1343</td>
+      <td>0.69</td>
+      <td>0.14</td>
+    </tr>
+    <tr>
+      <td>2011-02-11 07:00:00.0</td>
+      <td>0.0</td>
+      <td>0.68</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <td>2011-02-13 18:00:00.0</td>
+      <td>0.3284</td>
+      <td>0.28</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <td>2011-02-18 12:00:00.0</td>
+      <td>0.1642</td>
+      <td>0.72</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <td>2011-02-19 03:00:00.0</td>
+      <td>0.3881</td>
+      <td>0.13</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <td>2011-02-19 04:00:00.0</td>
+      <td>0.2985</td>
+      <td>0.14</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <td>2013-01-01 00:00:00.0</td>
+      <td>0.1343</td>
+      <td>0.65</td>
+      <td>0.26</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="output">Output</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>datetime</th>
+      <th>windspeed</th>
+      <th>hum</th>
+      <th>temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2011-02-19 03:00:00.0</td>
+      <td>0.3881</td>
+      <td>0.13</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <td>2011-02-13 18:00:00.0</td>
+      <td>0.3284</td>
+      <td>0.28</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <td>2011-02-19 04:00:00.0</td>
+      <td>0.2985</td>
+      <td>0.14</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <td>2011-02-18 12:00:00.0</td>
+      <td>0.1642</td>
+      <td>0.72</td>
+      <td>0.44</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

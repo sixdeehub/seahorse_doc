@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mushrooms</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class="active"><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Mushrooms</h1>
+      
+      <div style="display: table; margin-top: 50px; margin-bottom: 50px">
+  <div style="display: table-cell; vertical-align: top; width: 100%; padding-right: 20px">
+    <h2 style="margin-top: 0; padding-top: 0">Basic Information</h2>
+    <p>
+      <b>Dataset</b>: <a target="_blank" href="http://archive.ics.uci.edu/ml/datasets/Mushroom">Mushroom Data Set</a>
+    </p>
+    <p>
+      <b>Dataset size</b>: 8124 instances (4208 edible and 3916 poisonous);
+      22 features (phenotypic traits codes, e.g. cap color, odor, veil type, habitat) and 1 label column (edible or poisonous).
+    </p>
+    <p>
+      <b>Dataset description</b>:
+      This data set includes descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota Family.
+    </p>
+    <p>
+      <b>Business purpose</b>:
+      Distinguishing poisonous and edible mushrooms.
+      Classification model created during this experiment could aid experts in classifying mushroom specimens as poisonous or edible.
+    </p>
+    <p>
+      <b>Data set credits</b>:
+      Lichman, M. (2013). UCI Machine Learning Repository
+      <a target="_blank" href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>.
+      Irvine, CA: University of California, School of Information and Computer Science.
+    </p>
+  </div>
+</div>
+
+<div style="display: table-cell; margin-top: 50px; margin-bottom: 50px">
+  <h2 style="margin-top: 0; padding-top: 0">Workflow Overview</h2>
+  <div style="display: table-cell; vertical-align: top; width: 100%">
+    <img class="centered-image img-responsive spacer" src="../img/usecases/mushrooms/workflow_overview.png" width="100%" />
+  </div>
+  <p>
+    This is a complete experiment that generates a mushroom classification model.
+    The workflow file is included in Seahorse,
+    but we will also show you how to create that experiment step-by-step.
+  </p>
+</div>
+
+<h2 id="step-by-step-workflow-creation">Step-by-step Workflow Creation</h2>
+
+<h3 id="reading-data">Reading Data</h3>
+
+<p>The data is provided in a form of a 23-column, comma-separated CSV-like file with column names in the first line.
+To work with the dataset, it has to be loaded into Seahorse. This can be done by a
+<a href="../operations/read_dataframe.html">Read DataFrame</a> operation.
+Let’s place it on the canvas using drag-and-drop from the operations palette.
+To load the data, we need to create a Data Source corresponding to the file.
+<strong>SOURCE</strong>: <a target="_blank" href="https://s3.amazonaws.com/workflowexecutor/examples/data/mushrooms.csv">https://s3.amazonaws.com/workflowexecutor/examples/data/mushrooms.csv</a></p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/data_source_creation.png" /></p>
+
+<p>After preparing Data Source for Read DataFrame, the operation is ready to be executed
+ -– simply click the RUN button in the top Seahorse toolbar.
+If you have much more operations on the canvas and you are interested in the results of only one operation,
+you can use partial execution of the workflow. Simply select that operation before clicking RUN.
+When the execution ends, a report of the operation will be available.
+Let’s click on the operation output port to see its result.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/output_port.png" /></p>
+
+<p>At the bottom of the screen you will see a simple DataFrame report.
+It contains information about data loaded by the Read DataFrame operation.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/read_dataframe_report.png" /></p>
+
+<p>The DataFrame is too wide (more than 20 columns) to allow viewing the data sample in the report,
+so we are able to explore here only the column types and names.
+If you want to explore the data a bit more, you can use
+a <a href="../operations/python_notebook.html">Python Notebook</a> operation
+(it allows interactive data exploration). Just place it on the canvas (use drag-and-drop technique)
+and connect its input port with the Read DataFrame output port
+(click on the output port and drag it to an input port of the other operation).
+Now, you can open the Python Notebook by selecting it on the canvas and clicking at the “Open notebook” button on the right panel.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/open_notebook_button.png" /></p>
+
+<p>In the newly opened window, enter: <code>dataframe().take(10)</code> and click on the “run cell” button
+(you can use a shortcut for it: Ctrl+Enter).
+Now you can closely investigate the data sample of the first 10 rows returned
+by the Read DataFrame operation.</p>
+
+<h3 id="data-transformation">Data Transformation</h3>
+
+<p>In the first column we have labels stating to which class a specific sample belongs (possible values: <code>edible</code> or <code>poisonous</code>).
+We have discovered that all columns have string values.
+To perform classification, Seahorse needs a numeric label column and a vector of numerics as features column.
+We need to map string values to numbers and assembly features into a single vector column.
+This can be done by combining multiple operations
+ – <a href="../operations/string_indexer.html">String Indexer</a>
+with <a href="../operations/one_hot_encoder.html">One Hot Encoder</a>
+and <a href="../operations/assemble_vector.html">Assemble Vector</a>
+ – as shown in the workflow overview image.</p>
+
+<p>The String Indexer operation translates string values to numeric ordinal values.
+It needs to have its parameters modified, as follows:</p>
+
+<p><strong>OPERATE ON</strong>: multiple columns</p>
+
+<p><strong>INPUT COLUMNS</strong>: Including index range 0-22 (all columns)</p>
+
+<p><strong>OUTPUT</strong>: append new columns</p>
+
+<p><strong>COLUMN NAME PREFIX</strong>: indexed_</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/string_indexer_parameters.png" /></p>
+
+<p>The One Hot Encoder operation translates ordinal values to vector having “1” only at position given by input numeric value.
+It needs to have its parameters modified, as follows:</p>
+
+<p><strong>OPERATE ON</strong>: multiple columns</p>
+
+<p><strong>INPUT COLUMNS</strong>: Including index range 24-38 and 40-45</p>
+
+<p><em>We have to exclude the column at index 39 (indexed_veil-type) because all mushroom specimens had
+<a target="_blank" href="https://en.wikipedia.org/wiki/Partial_veil">partial veil</a>.
+One Hot Encoder does not allow operating on columns with only one value
+(unless user wants to drop the last category using DROP LAST parameter).</em></p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/one_hot_encoder_parameters.png" /></p>
+
+<p>Assemble Vector merges columns with numerics and vectors of numerics into a single vector of numerics. It needs to have its parameters modified, as follows:</p>
+
+<p><strong>INPUT COLUMNS</strong>: Including index range 24-45 (columns generated by the String Indexer, excluding generated column containing edibility label)</p>
+
+<p><strong>OUTPUT COLUMN</strong>: features</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/assemble_vector_parameters.png" /></p>
+
+<h3 id="remove-unnecessary-columns">Remove Unnecessary Columns</h3>
+
+<p>We will use the
+<a href="../operations/sql_transformation.html">SQL Transformation</a>
+operation to remove unnecessary columns from the dataset and give more meaningful names to columns
+that are essential for our experiment.
+It will make the dataset reports smaller and facilitate exploring data.</p>
+
+<p>SQL Transformation needs to have its parameter modified, as follows:</p>
+
+<p><strong>EXPRESSION</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
+    <span class="n">edible</span> <span class="k">AS</span> <span class="n">edibility_string</span><span class="p">,</span>
+    <span class="n">indexed_edible</span> <span class="k">AS</span> <span class="n">edibility_label</span><span class="p">,</span>
+    <span class="n">features</span>
+<span class="k">FROM</span> <span class="n">df</span></code></pre></figure>
+
+<h3 id="splitting-into-training-and-test-set">Splitting Into Training and Test Set</h3>
+
+<p>To perform a fair evaluation of our model, we need to split our data into two parts:
+a testing dataset and a training dataset. That task could be accomplished by using
+a <a href="../operations/split.html">Split</a> operation.
+To divide the dataset in ratio 1 to 3, we do need to modify its default parameters:</p>
+
+<p><strong>SPLIT RATIO</strong>: 0.75
+<em>(percentage of rows that should end up in the first output DataFrame – the training set)</em></p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/split_parameters.png" /></p>
+
+<h3 id="model-training">Model Training</h3>
+
+<p>To train a model, we need to use
+the <a href="../operations/fit.html">Fit</a> operation,
+which can be used to fit
+an <a href="../classes/estimator.html">Estimator</a>.
+We want to use logistic regression classification, so we will put
+the <a href="../operations/logistic_regression.html">Logistic Regression</a>
+operation on the canvas and connect it to the Fit operation.</p>
+
+<p>We will leave almost all default values of Logistic Regression parameters unchanged,
+we need only to change the label column to edibility_label.</p>
+
+<p><strong>LABEL COLUMN</strong>: edibility_label</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/logistic_regression_parameters.png" /></p>
+
+<h3 id="verifying-model-effectiveness-on-test-data">Verifying Model Effectiveness On Test Data</h3>
+
+<p>By using Split operation, we had generated a training dataset and a test dataset from the input data.
+We have trained our model on the training dataset.
+Now it is time to use the test dataset to verify the effectiveness of our classification model.
+To generate predictions using the trained model, we need to use
+a <a href="../operations/transform.html">Transform</a> operation.
+To assess effectiveness of our model we will count “Falsely Poisonous” (waste of edible mushrooms)
+and “Falsely Edible“ (very dangerous!) entries in the test dataset. To perform the calculations,
+we will use the SQL Transformation operation.</p>
+
+<p>After executing the Transform operation, we can investigate the resulting report:</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/transform_report.png" /></p>
+
+<p>Thanks to projecting only the necessary columns, the resulting dataset fits in the column number limit
+and we are able to view the data sample. We can notice that the test dataset has 2057 entries.
+Also we can see that the String Indexer operation assigned 0 to “e” label (edible class) and 1 to “p” label (poisonous class).
+We can also notice that the prediction column has “almost the same” values as “edibility” column,
+so we can suspect that our model performs well. Let’s measure its performance:</p>
+
+<p>The SQL Transformation (Falsely Edible) needs to have its parameter modified, as follows:</p>
+
+<p><strong>EXPRESSION</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df</span> <span class="k">WHERE</span> <span class="n">prediction</span><span class="o">=</span><span class="mi">0</span> <span class="k">AND</span> <span class="n">edibility_label</span><span class="o">=</span><span class="mi">1</span></code></pre></figure>
+
+<p>The SQL Transformation (Falsely Poisonous) needs to have its parameter modified, as follows:</p>
+
+<p><strong>EXPRESSION</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">df</span> <span class="k">WHERE</span> <span class="n">prediction</span><span class="o">=</span><span class="mi">1</span> <span class="k">AND</span> <span class="n">edibility_label</span><span class="o">=</span><span class="mi">0</span></code></pre></figure>
+
+<p>Now we can explore reports in these two operations and compare the number of rows in each of them:</p>
+
+<p><strong>Falsely Poisonous</strong>: 0</p>
+
+<p><strong>Falsely Edible</strong>: 0</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>It means that we have trained a surprisingly accurate prediction model for classifying mushrooms.
+We have to remember that some dangers remain such as:</p>
+
+<ol>
+  <li>Mushroom picker examining the specimen can make a mistake during assessment of traits or entering data to the computer.</li>
+  <li>Data sample might be too small to create a comprehensive model for predicting edibility of all mushrooms that users will want to classify.</li>
+  <li>Two different mushroom species can have identical traits, while one of the species is edible and the second one is poisonous.</li>
+</ol>
+
+<p>Due to those problems, we can use this model only to <strong>aid expertise</strong> on mushroom edibility.
+Experts should always have the last word over issues that are potentially dangerous for other people,
+like classifying poisonous mushrooms.
+This must be followed not only due to lack of confidence for the newly created prediction model
+(experts can make mistakes even more often than this model),
+but most of all – due to legal responsibility of those decisions.</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

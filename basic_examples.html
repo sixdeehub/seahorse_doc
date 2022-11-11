@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Examples</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/pygments-default.css">
+
+  <script src="./js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="./js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="./js/layout-setup.js"></script>
+  <script src="./js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href="."><img src="./img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href=".">Overview</a></li>
+            <li class="editor-link"><a href="./getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="./deployment.html">Deployment</a></li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="active"><a href="./basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="./casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="./casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="./casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="./casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="./casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="./reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="./reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="./reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="./operations.html">Operations</a></li>
+                <li class=""><a href="./reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="./reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="./reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="./reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Basic Examples</h1>
+      
+      <p>This set of basic examples will introduce you to some of the fundamental Seahorse features.</p>
+
+<h3 id="example-1---build-a-simple-regression-model">Example 1 - Build a Simple Regression Model</h3>
+
+<p>The goal of this exercise is to build a model predicting apartment prices based on 3 features:
+<strong>beds</strong>, <strong>baths</strong> and <strong>sq_ft</strong>.</p>
+
+<p>The dataset <a target="_blank" href="https://s3.amazonaws.com/workflowexecutor/examples/data/transactions.csv">transactions.csv</a> has 5 columns and 1,000 rows
+(header row and 999 data rows).
+Each row provides information about the apartment:
+city, number of bedrooms, number of bathrooms, size of the apartment (in square feet) and its price.</p>
+
+<pre><code>city,beds,baths,sq_ft,price
+CityB,4,1,1294,529377
+CityC,4,2,1418,574485
+CityC,2,1,600,221661
+...
+</code></pre>
+
+<p>To build the model we will split our initial dataset
+into two parts - training and validation sets. We will train a
+linear regression model using training set.
+The model will be scored (against the validation part of the dataset) and report of
+the scoring will be produced (model performance report).</p>
+
+<h4 id="create-a-new-workflow">Create a New Workflow</h4>
+
+<ol>
+  <li>Create an empty workflow:
+    <ul>
+      <li>Go to Seahorse main page and click <strong>New workflow</strong>.</li>
+      <li>Put <code>machinelearning1</code> in the <strong>Name</strong> section - setting a meaningful name will help
+when looking for a workflow in the workflow list.</li>
+      <li>Press the <strong>Create</strong> button.</li>
+      <li>Start editing the workflow.</li>
+    </ul>
+  </li>
+  <li>Set the source of your data:
+    <ul>
+      <li>Right-click on the canvas and select a <a href="operations/read_dataframe.html">Read DataFrame</a> operation.</li>
+      <li>Click on the created <code>Read DataFrame</code> operation - the panel on the right now shows its parameters.</li>
+      <li>Select a data source from which you want to read the data. In this case, pick <code>transactions.csv</code>.
+Once the operation gets executed, the dataset will be downloaded from a web address.</li>
+    </ul>
+
+    <p style="text-align:center; float:right">
+     <img class="img-responsive" style="padding: 1em;" src="./img/examples_workflow1.png" />
+     <em>The Simple Regression Model</em>
+ </p>
+  </li>
+  <li>Select features that will be used to train and evaluate model and create a vector column
+containing selected features&#8217; values:
+    <ul>
+      <li>Drag an edge from the output port of the <code>Read DataFrame</code>.
+Select an <a href="operations/assemble_vector.html">Assemble Vector</a> operation.</li>
+      <li>In the <strong>INPUT COLUMNS</strong> section:
+        <ul>
+          <li>Click <strong>Edit selection</strong>, this will open the selection window for the <code>INPUT COLUMNS</code> parameter.</li>
+          <li>Select <strong>Excluding</strong> mode in the top-right corner - this will include all values
+  except the ones selected in the features column.</li>
+          <li>Add <code>city</code> and <code>price</code> to the list - we have to exclude the <code>city</code>
+column, because it does not contain numeric values and <code>price</code>, because it contains
+the actual results.</li>
+        </ul>
+      </li>
+      <li>Put <code>features</code> in the <code>OUTPUT COLUMN</code> parameter - the operation will add a column
+with this name to the dataset.</li>
+    </ul>
+  </li>
+  <li>Split the dataset into training and test sets:
+    <ul>
+      <li>Drag an edge from the middle port of the <code>Assemble Vector</code>. Select a <a href="operations/split.html">Split</a> operation.</li>
+      <li>Put <code>0.7</code> in the <code>SPLIT RATIO</code> parameter - we will use 30% of the data for
+training and 70% for evaluation.</li>
+      <li>Put <code>0</code> in the <code>SEED</code> parameter - the split operation itself is not deterministic.
+You can put any value here - it will split the dataset differently, but in the same proportions.</li>
+    </ul>
+  </li>
+  <li>Use the linear regression algorithm:
+    <ul>
+      <li>Right-click on the canvas and select <a href="operations/linear_regression.html">Linear Regression</a> operation.</li>
+      <li>In the <strong>FEATURES COLUMN</strong> section:
+        <ul>
+          <li>Click <strong>Edit selection</strong>, this will open the selection window for the <code>FEATURES COLUMN</code> parameter.</li>
+          <li>Click at <strong>Select by name</strong> and put <code>features</code> in the text field - this will use
+the column created in step 3.</li>
+        </ul>
+      </li>
+      <li>In the <code>PREDICTION COLUMN</code> section put <code>prediction</code> - this new column will contain
+predicted values.</li>
+      <li>In the <strong>LABEL COLUMN</strong> section:
+        <ul>
+          <li>Click <strong>Edit selection</strong> - this will open a selection window for the <code>LABEL COLUMN</code> parameter.</li>
+          <li>Click at <strong>Select by name</strong> and put <code>price</code> in the text field - <strong>price</strong>
+column contains the actual values that we will evaluate our model against.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Drag an edge from the output port of the <code>Linear Regression</code> and select a <a href="operations/fit.html">Fit</a> operation.
+This operation will be used to fit model to the training set.</p>
+  </li>
+  <li>
+    <p>Drag an edge from the output port of the <code>Fit</code> and select a <a href="operations/transform.html">Transform</a> operation.
+It will transform the dataset using the model fitted in the previous step.</p>
+  </li>
+  <li>Select evaluation method:
+    <ul>
+      <li>Right-click on the canvas and select a <a href="operations/regression_evaluator.html">Regression Evaluator</a> operation.
+        <ul>
+          <li>This operation will create an evaluator for regression algorithms, we will use the default
+evaluation metric (RMSE).</li>
+          <li>Put <code>prediction</code> in the <code>PREDICTION COLUMN</code> parameter.</li>
+          <li>Put <code>price</code> in the <code>LABEL COLUMN</code> parameter.</li>
+          <li>The evaluator will measure the error between <strong>price</strong> and <strong>prediction</strong> columns.</li>
+        </ul>
+      </li>
+      <li>Drag an edge from the output port of the <code>Regression Evaluator</code> and select
+an <a href="operations/evaluate.html">Evaluate</a> operation.</li>
+      <li>Connect the output port of the <code>Transform</code> with the input port of the <code>Evaluate</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<div style="clear:both" />
+
+<h4 class="no_toc" id="execute-the-workflow">Execute the Workflow</h4>
+
+<ul>
+  <li>Click on the <code>Evaluate</code> node.
+This will mark the node to be executed. All required predecessor nodes will be executed as well.</li>
+  <li>Press <strong>RUN</strong> button from the top menu.
+This operation will execute the workflow and may take some time. During the execution you can see
+the progress by observing icons on operation nodes. The operation being executed will have a
+spinning wheel on the right side. Completed operations are marked with green ticks. The workflow
+execution will be finished when the selected Evaluate node&#8217;s execution is completed.</li>
+</ul>
+
+<h4 class="no_toc" id="view-the-reports">View the Reports</h4>
+
+<p>Click on the report icon under the <code>Evaluate</code> node. Report panel with evaluation metric
+will be shown at the bottom of the screen. This metric is showing our model&#8217;s performance.
+In the next example we will try to improve it.</p>
+
+<h4 id="export-the-model">Export the Model</h4>
+
+<p><img class="img-responsive" style="float:right; padding: 1em;" src="./img/write_transformer.png" /></p>
+
+<p>Model training might take a lot of time. It is possible to export trained
+models for further reuse with <code>Write Transformer</code> operation.
+An exported model can also be shared with other users.</p>
+
+<ol>
+  <li>Right-click on the canvas and select a <code>Write Transformer</code> operation.</li>
+  <li>Set <strong>OUTPUT PATH</strong> parameter&#8217;s value to <code>/resources/data/model_example_1</code>.</li>
+  <li>Drag the <code>Fit</code> output to the <code>Write Transformer</code> operation.</li>
+  <li>Click <strong>RUN</strong> to execute the workflow again. It will write the transformer to the specified path.</li>
+</ol>
+
+<h3 id="example-2---build-a-better-model">Example 2 - Build a Better Model</h3>
+
+<p>The goal of this exercise is to improve our previous model&#8217;s performance.
+In the previous example we only used 3 features of the apartments:
+<strong>beds</strong>, <strong>baths</strong> and <strong>sq_ft</strong>.
+We will now add the <strong>city</strong> feature to the model.</p>
+
+<p>In our dataset <strong>city</strong> is a text column,
+and <a href="operations/linear_regression.html">Linear Regression</a>
+algorithm only works on numerical columns.
+A quick glance on the <strong>city</strong> column&#8217;s values suggests that it might be a categorical column - a column
+containing only a small, fixed set of different values. We will process this feature before
+executing linear regression algorithm on the data.</p>
+
+<h4 id="update-the-workflow">Update the Workflow</h4>
+
+<p style="text-align:center; float:right">
+    <img class="img-responsive" src="./img/examples_workflow2.png" />
+    <em>The Updated Workflow</em>
+</p>
+
+<ol>
+  <li>
+    <p>Open workflow from <strong>Example 1</strong>.</p>
+  </li>
+  <li>Disconnect the <code>Assemble Vector</code> node from the <code>Read DataFrame</code> node:
+    <ul>
+      <li>Grab the connection going into the input port of the <code>Assemble Vector</code> node and drag it
+anywhere on the empty space of the canvas.</li>
+    </ul>
+  </li>
+  <li>Convert <strong>city</strong> feature to categorical:
+    <ul>
+      <li>Drag an edge from the output port of the <code>Read DataFrame</code> and select
+a <a href="operations/string_indexer.html">String Indexer</a> operation.
+        <ul>
+          <li>This operation will create a new column, <code>city_index</code>, with numbers representing
+text values from the original column.</li>
+          <li>Select <code>one column</code> in <code>OPERATE ON</code> selector.</li>
+          <li>Select <code>city</code> in the <code>INPUT COLUMN</code>.</li>
+          <li>Select <code>append new column</code> in <code>OUTPUT</code> selector.</li>
+          <li>Put <code>city_index</code> in the <code>OUTPUT COLUMN</code>.</li>
+        </ul>
+      </li>
+      <li>Drag an edge from the output port of the <code>String Indexer</code> and select
+an <a href="operations/one_hot_encoder.html">One Hot Encoder</a> operation.
+        <ul>
+          <li>This operation will create separate columns for each value from the original column.</li>
+          <li>Select <code>one column</code> in <code>OPERATE ON</code> selector.</li>
+          <li>Select <code>city_index</code> in the <code>INPUT COLUMN</code>.</li>
+          <li>Select <code>append new column</code> in <code>OUTPUT</code> selector.</li>
+          <li>Put <code>city_encoded</code> in the <code>OUTPUT COLUMN</code>.</li>
+        </ul>
+      </li>
+      <li>Connect the output port of the <code>One Hot Encoder</code> with the input port of the <code>Assemble Vector</code>.</li>
+      <li>Modify existing <code>Assemble Vector</code> node and add <code>city_index</code> to excluded columns:
+        <ul>
+          <li>In the <strong>INPUT COLUMNS</strong> section click <strong>Edit selection</strong>.</li>
+          <li>Add <code>city_index</code> to the list - we only want to add <code>city_encoded</code>
+column to the features.</li>
+        </ul>
+      </li>
+      <li>As a result of executing the operations above, our dataset will contain additional
+columns with values <code>0</code> or <code>1</code> for each possible value of the <code>city</code>
+column.</li>
+    </ul>
+  </li>
+</ol>
+
+<div style="clear:both" />
+
+<h4 class="no_toc" id="execute-the-workflow-1">Execute the Workflow</h4>
+
+<ul>
+  <li>Click on the <code>Evaluate</code> node.</li>
+  <li>Press <strong>RUN</strong> button from the top menu.</li>
+</ul>
+
+<h4 class="no_toc" id="view-the-reports-1">View the Reports</h4>
+
+<p>Click on the report icon under the <code>Evaluate</code> node. As you can see the model performance is much
+better than in the previous example.</p>
+
+<h3 id="example-3---analyze-the-data-using-a-python-notebook">Example 3 - Analyze the Data Using a Python Notebook</h3>
+
+<p>The goal of this exercise is to show how to use an embedded <a href="operations/python_notebook.html">Python Notebook</a>
+to interactively analyze data.</p>
+
+<p style="text-align: center;">
+    <img class="img-responsive centered-image" style="padding: 1em;" src="./img/examples_workflow3.png" />
+    <em>Analyze the Data Using a Python Notebook</em>
+</p>
+
+<h4 id="create-a-new-workflow-1">Create a New Workflow</h4>
+
+<ul>
+  <li>Create an empty workflow:
+    <ul>
+      <li>Go to Seahorse main page and click <strong>New workflow</strong>.</li>
+      <li>Put <code>notebook1</code> in the <strong>Name</strong> section.</li>
+      <li>Press the <strong>Create</strong> button.</li>
+      <li>Start editing the workflow.</li>
+    </ul>
+  </li>
+  <li>Set the source of your data:
+    <ul>
+      <li>Right-click on canvas and select a <a href="operations/read_dataframe.html">Read DataFrame</a> operation.</li>
+      <li>In the <code>Read DataFrame</code> parameters, pick the <code>grades_2.0.csv</code> data source.</li>
+    </ul>
+  </li>
+  <li>Process the dataset before opening the notebook:
+    <ul>
+      <li>Drag an edge from the output port of the <code>Read DataFrame</code> and select
+a <a href="operations/python_transformation.html">Python Transformation</a> operation.</li>
+      <li>Put the following code in the <code>CODE</code> parameter, in order to extract the <code>FCE</code> value
+from <code>Certificates</code> column to a separate column:</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_fce</span><span class="p">(</span><span class="n">js</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">js</span><span class="p">)[</span><span class="s">&#39;Cambridge&#39;</span><span class="p">][</span><span class="s">&#39;FCE&#39;</span><span class="p">])</span>
+
+    <span class="n">sqlContext</span><span class="o">.</span><span class="n">registerFunction</span><span class="p">(</span>
+      <span class="s">&quot;get_fce&quot;</span><span class="p">,</span> <span class="n">get_fce</span><span class="p">,</span> <span class="n">FloatType</span><span class="p">())</span>
+    <span class="n">sqlContext</span><span class="o">.</span><span class="n">registerDataFrameAsTable</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="s">&quot;df&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+      <span class="s">&quot;SELECT Math, English, get_fce(Certificates) as FCE FROM df&quot;</span><span class="p">)</span></code></pre></figure>
+
+<p>This snippet of code uses a user-defined SQL function that
+utilizes Python’s json library in order to parse our <code>Certificates</code> column.</p>
+
+<ul>
+  <li>Drag an edge from the middle output port of the <code>Python Transformation</code>
+and select a <a href="operations/python_notebook.html">Python Notebook</a>.</li>
+</ul>
+
+<h4 id="execute-and-edit-the-python-notebook">Execute and Edit the Python Notebook</h4>
+
+<ul>
+  <li>Select the created <code>Python Notebook</code> node.</li>
+  <li>Press <strong>RUN</strong> button from the top menu.</li>
+  <li>Click <strong>Open notebook</strong> in the right panel. A notebook window will be shown, where you can write
+Python code snippets, execute them and see the execution results.</li>
+</ul>
+
+<h5 class="no_toc" id="use-the-spark-context">Use the Spark Context</h5>
+
+<p>The Spark Context is available in the <code>Python Notebook</code> as a global variable <code>sc</code>.</p>
+
+<table>
+<tr>
+<td><b>In:</b></td>
+<td>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></code></pre></figure>
+
+</td>
+</tr>
+
+<tr>
+<td><b>Out:</b></td>
+<td>
+[1, 4, 9, 16, 25]
+</td>
+</tr>
+</table>
+
+<h5 class="no_toc" id="use-the-sqlcontext">Use the SQLContext</h5>
+
+<p>SQLContext can be accessed as a global variable <code>sqlContext</code>.</p>
+
+<table>
+<tr>
+<td><b>In:</b></td>
+<td>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sqlContext</span><span class="o">.</span><span class="n">registerDataFrameAsTable</span><span class="p">(</span><span class="n">dataframe</span><span class="p">(),</span> <span class="s">&quot;notebook_df&quot;</span><span class="p">)</span>
+<span class="n">sqlContext</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s">&quot;SELECT FCE FROM notebook_df&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+</td>
+</tr>
+
+<tr>
+<td><b>Out:</b></td>
+<td>
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>143</th>
+      <td>54.563766</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>77.494507</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>70.320213</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>53.837051</td>
+    </tr>
+    <tr>
+      <th>663</th>
+      <td>66.830711</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</td>
+</tr>
+</table>
+
+<h5 class="no_toc" id="perform-operations-on-the-input-dataframe">Perform Operations on the Input DataFrame</h5>
+
+<p>You can access the <code>DataFrame</code> passed to the <code>Python Notebook</code> node on the first input port by calling the
+<code>dataframe()</code> function.</p>
+
+<table>
+<tr>
+<td><b>In:</b></td>
+<td>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+</td>
+</tr>
+
+<tr>
+<td><b>Out:</b></td>
+<td>
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+      <th>FCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>758</th>
+      <td>48.541864</td>
+      <td>67.253461</td>
+      <td>50.007278</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>48.970637</td>
+      <td>60.484968</td>
+      <td>78.093758</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>37.470484</td>
+      <td>76.686701</td>
+      <td>58.276207</td>
+    </tr>
+    <tr>
+      <th>449</th>
+      <td>55.859676</td>
+      <td>64.828651</td>
+      <td>75.111809</td>
+    </tr>
+    <tr>
+      <th>970</th>
+      <td>31.342785</td>
+      <td>72.106684</td>
+      <td>70.328934</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</td>
+</tr>
+</table>
+
+<h5 class="no_toc" id="visualize-data-using-pandas-and-matplotlib">Visualize Data Using Pandas and Matplotlib</h5>
+
+<p>You can use Matplotlib inside notebook cells to generate plots and visualize your data.</p>
+
+<table>
+<tr>
+<td><b>In:</b></td>
+<td>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">&#39;hist&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Score&#39;</span><span class="p">)</span></code></pre></figure>
+
+</td>
+</tr>
+
+<tr>
+<td><b>Out:</b></td>
+<td>
+<div>
+        <p>&lt;matplotlib.text.Text at 0x7f05649ab390&gt;</p>
+
+        <p><img src="img/examples_notebook_plot.png" alt="png" /></p>
+      </div>
+</td>
+</tr>
+</table>
+
+<h3 id="example-4---import-a-model">Example 4 - Import a Model</h3>
+
+<p>The goal of this exercise is to import and use a previously trained and
+exported model. Note that the <code>Export model</code> step from Example 1 must be finished prior to this example.</p>
+
+<h4 id="import-model">Import Model</h4>
+
+<p><img class="img-responsive" style="float:right; padding: 1em;" src="./img/read_transformer_04.png" /></p>
+
+<ol>
+  <li>Create an empty workflow.</li>
+  <li>Import the model:
+    <ul>
+      <li>Right-click on the canvas and select a <code>Read Transformer</code> operation.</li>
+      <li>Set <strong>SOURCE</strong> parameter&#8217;s value to <code>/resources/data/model_example_1</code>.
+This path refers to the model saved in the Example 1.</li>
+    </ul>
+  </li>
+  <li>Load the data to be run with the imported model:
+    <ul>
+      <li>Create a <code>Read DataFrame</code> operation and set parameters as explained in Example 1.
+Note that in a real life scenario new data would be used.</li>
+    </ul>
+  </li>
+  <li>The data passed to the model must have the same schema as the data used in training.
+We need to recreate preprocessing from Example 1:
+    <ul>
+      <li>Create an <code>Assemble Vector</code> operation and set parameters as explained in Example 1.</li>
+    </ul>
+
+    <p>Hint: if the data preprocessing is built of many operations it might be a
+good idea to encapsulate these operations inside a <a href="./operations/create_custom_transformer.html">Custom Transformer</a>
+operation and export it as well. Importing and using this <code>Custom Transformer</code>
+allows user to reuse preprocessing logic.</p>
+  </li>
+  <li>Use the imported model with new data:
+    <ul>
+      <li>Drag the edge from the output port of the <code>Read Transformer</code> and select a <code>Transform</code> operation.</li>
+      <li>Connect the <code>Assemble Vector</code> output with the <code>Transform</code> operation input.</li>
+      <li>Click <strong>RUN</strong> to execute the workflow.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>To make sure that your imported model is working correctly you can view
+the data report to check the generated predictions.</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="./img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="./img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="./img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

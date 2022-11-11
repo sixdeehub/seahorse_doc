@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Prediction</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class="active"><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Income Prediction</h1>
+      
+      <h2 id="basic-information">Basic Information</h2>
+
+<p><strong>Dataset</strong>: <a target="_blank" href="http://archive.ics.uci.edu/ml/datasets/Adult">Adult Data Set</a></p>
+
+<p><strong>Dataset size</strong>: 32,561 rows; 15 columns (6 numerical columns, 9 string columns).</p>
+
+<p><strong>Dataset description</strong>: Dataset contains various information on US citizens such as:
+age, workclass, education, marital status, sex, capital gain,
+capital loss, hours per week, native country.</p>
+
+<p><strong>Business purpose</strong>: Predict whether a person&#8217;s income exceeds $50K/yr based on census data.</p>
+
+<p><strong>Data set credits</strong>: Lichman, M. (2013). UCI Machine Learning Repository
+<a target="_blank" href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>.
+Irvine, CA: University of California, School of Information and Computer Science.</p>
+
+<h2 id="workflow-overview">Workflow Overview</h2>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/income_predicting/workflow.png" /></p>
+
+<p>Many businesses would like to personalize their offer based on customer’s income.
+High-income customers could be, for instance, exposed to premium products.
+As a customer’s income is not always explicitly known, predictive model could estimate
+income of a person based on other information.</p>
+
+<p>Our goal is to create a predictive model that will be able to output a single decision - i.e. whether
+the income of given person exceeds 50k per year - based on other information about the individual.</p>
+
+<p>As our predictive method we will use logistic regression, which is a binary classification algorithm.
+First, we will split our dataset into two parts - training set and validation set.
+Then, we will train a logistic regression model on samples from the training set
+and finally evaluate its accuracy based on validation dataset.</p>
+
+<h2 id="step-by-step-workflow-creation">Step-by-step Workflow Creation</h2>
+
+<h3 id="reading-data">Reading Data</h3>
+
+<p>The data is provided in form of CSV file, with the names of columns described in the first row.
+In order to pull the data we will use <a href="../operations/read_dataframe.html">Read Data Frame</a> operation
+with the following Data Source attached.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/income_predicting/data_source.png" /></p>
+
+<h3 id="extracting-features-and-transforming-data">Extracting Features and Transforming Data</h3>
+
+<p>Logistic regression algorithm expects each sample to be in a form of a vector of continuous features.
+When we take a look at our dataset, we see that some of the columns are of numeric type,
+while others are strings. In order to train our algorithm, we need to convert all of the string columns to numbers.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/income_predicting/image_1.png" /></p>
+
+<h4 id="mapping-strings-to-numerical-values">Mapping Strings to Numerical Values</h4>
+
+<p>First we need to map categorical values to numbers. To achieve this, we are using the <a href="../operations/string_indexer.html">String Indexer</a> operation.
+Conveniently, in our case we can select our columns by type.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/income_predicting/parameters_image_1.png" /></p>
+
+<p>After executing this operation, we can see that for example in <strong>sex</strong> column all <code>Male</code> values were changed to <code>0</code>, while all <code>Female</code> values were changed to <code>1</code>.</p>
+
+<h4 id="converting-numbers-to-vectors">Converting Numbers to Vectors</h4>
+
+<p>Although all of our features are now numeric, passing them directly to our algorithm would be a mistake.
+This is because logistic regression could come up with erroneous conclusions while depending on their numerical properties.</p>
+
+<p>This issue can be solved using <a href="../operations/one_hot_encoder.html">One Hot Encoder</a> operation.
+It receives a categorical value as a number from a fixed range, and produces a vector in which each column corresponds to one possible value of the feature.
+For instance, <strong>race</strong> column has five possible values. One Hot Encoder will encode the second category as <code>[0,1,0,0,0]</code> and the fourth category as <code>[0,0,0,1,0]</code>.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/income_predicting/parameters_image_2.png" /></p>
+
+<h4 id="assembling-a-feature-vector">Assembling a Feature Vector</h4>
+
+<p>We use <a href="../operations/assemble_vector.html">Assemble Vector</a> operation to group all relevant columns together
+and form a column with a single vector of all the features.</p>
+
+<p>In our case <strong>is-over</strong> column represents the prediction target. All the other columns are features.
+We can easily select the desired columns using <code>excluding mode</code> selection to select everything
+but the prediction target column.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/income_predicting/parameters_image_3.png" /></p>
+
+<h3 id="training-model">Training Model</h3>
+
+<p>First we will split the data into a training set and a validation set.
+Then we will use <a href="../operations/fit.html">Fit</a> and <a href="../operations/logistic_regression.html">Logistic Regression</a> operations to train the model.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/income_predicting/image_2.png" /></p>
+
+<p>In this step, we&#8217;re using the <a href="../operations/split.html">Split</a> operation to split the data into a training set and a validation set.
+Training set&#8217;s purpose is to train the model. Validation set will later be used to evaluate the model&#8217;s accuracy.
+We will use a <code>0.7</code> <code>split ratio</code>, so that 70% of the data is used for training.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/income_predicting/parameters_image_4.png" /></p>
+
+<p>To train the model, we will need <a href="../operations/logistic_regression.html">Logistic Regression</a> and <a href="../operations/fit.html">Fit</a> operations.
+Note that inside Fit operation&#8217;s parameters, we need to change <code>label column</code> parameter to <code>is-over</code>.
+We leave feature column parameter at its current value (<code>features</code>), because this is how we named the vector in Vector Assembler.
+We will leave the default values in all of the remaining parameters as well.</p>
+
+<p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/income_predicting/parameters_image_fit.png" /></p>
+
+<h3 id="verifying-model-effectiveness">Verifying Model Effectiveness</h3>
+
+<p>Now that we have our model trained, we can use it to predict the income for our hold-out validation set.
+In order to do so, we&#8217;ll add a <a href="../operations/transform.html">Transform</a> operation.
+We&#8217;ll connect the validation set to the first port, and the model to the second one.
+This will produce a dataset with predictions.</p>
+
+<p><img class="centered-image img-responsive spacer" width="50%" src="../img/usecases/income_predicting/image_6.png" /></p>
+
+<p>To evaluate the model, we will use the <a href="../operations/sql_transformation.html">SQL Transformation</a>
+operation to check for each prediction whether it is correct, and whether it is a <em>true positive</em>, <em>false positive</em>, <em>true negative</em> or <em>false negative</em>.</p>
+
+<div class="spacer centered-container">
+    <img src="../img/usecases/income_predicting/parameters_image_sql_node.png" />
+    <img src="../img/usecases/income_predicting/parameters_image_sql_code.png" style="margin-left: 20px" />
+</div>
+
+<p>Let’s see the metrics for our model with the default transform parameters.
+To do this, we need to open the report created for the resulting DataFrame.
+We&#8217;ll click on the distribution icon for the <strong>correctness</strong> column.
+As we see on the distribution chart, the predictions of our model are correct for 86% of observations.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/income_predicting/image_4.png" /></p>
+
+<p>A <em>false negative</em> is a high-income customer classified as a low-income one.
+Analogically, a <em>false positive</em> is a low-income customer classified as a high-income one.</p>
+
+<p>Depending on application, it may turn out that <em>false negative</em> is a more severe type of an error than <em>false positive</em>,
+as we might miss some business opportunities with high-income customers.
+We might want to sacrifice some model accuracy for low-income customers in order to increase accuracy for high-income customers.</p>
+
+<p>Internally, logistic regression predicts the probability that the income of a particular person exceeds $50k.
+Then it makes the final decision based on the threshold parameter:
+if the predicted probability exceeded the threshold, the decision is <em>&gt;50k</em>, and in the other case: <em>&lt;=50k</em>.</p>
+
+<p>We may take advantage of this fact in order to decrease number of the <em>false negative</em> errors.
+By decreasing the threshold, our model is more likely to classify a customer as a high-income one. It means that we will classify
+more low-income customers incorrectly, but in the same time we will be much less prone to miss a high-income customer.</p>
+
+<p>The threshold parameter can be changed in the Transform operation.
+Let’s try to apply our model with a <code>0.3</code> threshold.
+We can reapply our model and make predictions once again, on our validation set, but with the <code>threshold</code> parameter’s value changed to <code>0.3</code>.</p>
+
+<p>Next, we want to use the same SQL Transformation, but on a different DataFrame.
+SQL Transformation operation outputs a <code>SQLTransformer</code> that can be reused using a Transform operation.
+For details about Transformers please refer to the <a href="../classes/transformer.html">documentation</a>.</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/income_predicting/image_3.png" /></p>
+
+<p>Let’s take a look at the effectiveness of our model with the modified threshold:</p>
+
+<p><img class="centered-image img-responsive spacer" src="../img/usecases/income_predicting/image_5.png" /></p>
+
+<p>As we can see, our high-earner identification accuracy is much better now.
+We got 19% <em>true</em> and 5% <em>false</em> predictions for high-income customers as opposed to previous 15% <em>true</em> and 9% <em>false</em>.
+Although overall accuracy went down from 86% to 83%, our high-income client predictions accuracy went up considerably.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this case-study we constructed a model that is able to accurately predict whether an individual earns over $50k/yr
+based on various data like marital status, education, age or nationality.
+The model might be tuned to meet our business needs which could be to classify high-income customers more accurately.</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

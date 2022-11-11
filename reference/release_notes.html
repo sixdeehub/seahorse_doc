@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release Notes</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class="active"><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Release Notes</h1>
+      
+      <p><strong>Table of Contents</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#technical-sheet" id="markdown-toc-technical-sheet">Technical Sheet</a>    <ul>
+      <li><a href="#bundled-software-packages" id="markdown-toc-bundled-software-packages">Bundled Software Packages</a></li>
+      <li><a href="#minimum-hardware-requirements-for-docker" id="markdown-toc-minimum-hardware-requirements-for-docker">Minimum Hardware Requirements For Docker</a></li>
+      <li><a href="#minimum-hardware-requirements-for-vagrant" id="markdown-toc-minimum-hardware-requirements-for-vagrant">Minimum Hardware Requirements For Vagrant</a></li>
+      <li><a href="#local-cluster-limitations" id="markdown-toc-local-cluster-limitations">Local Cluster Limitations</a></li>
+    </ul>
+  </li>
+  <li><a href="#changelog" id="markdown-toc-changelog">Changelog</a>    <ul>
+      <li><a href="#seahorse-14" id="markdown-toc-seahorse-14">Seahorse 1.4</a>        <ul>
+          <li><a href="#what-is-new" id="markdown-toc-what-is-new">What is New</a></li>
+          <li><a href="#known-issues" id="markdown-toc-known-issues">Known Issues</a></li>
+        </ul>
+      </li>
+      <li><a href="#seahorse-13" id="markdown-toc-seahorse-13">Seahorse 1.3</a>        <ul>
+          <li><a href="#what-is-new-1" id="markdown-toc-what-is-new-1">What is New</a></li>
+        </ul>
+      </li>
+      <li><a href="#seahorse-12" id="markdown-toc-seahorse-12">Seahorse 1.2</a>        <ul>
+          <li><a href="#what-is-new-2" id="markdown-toc-what-is-new-2">What is New</a></li>
+        </ul>
+      </li>
+      <li><a href="#seahorse-11" id="markdown-toc-seahorse-11">Seahorse 1.1</a>        <ul>
+          <li><a href="#what-is-new-3" id="markdown-toc-what-is-new-3">What is New</a></li>
+          <li><a href="#known-issues-1" id="markdown-toc-known-issues-1">Known Issues</a></li>
+        </ul>
+      </li>
+      <li><a href="#seahorse-10" id="markdown-toc-seahorse-10">Seahorse 1.0</a>        <ul>
+          <li><a href="#what-is-new-4" id="markdown-toc-what-is-new-4">What is New</a></li>
+          <li><a href="#known-issues-2" id="markdown-toc-known-issues-2">Known Issues</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="technical-sheet">Technical Sheet</h2>
+
+<h3 id="bundled-software-packages">Bundled Software Packages</h3>
+
+<ul>
+  <li>
+    <p>Apache Spark, version 2.0.2</p>
+  </li>
+  <li>Python, version 2.7.12</li>
+  <li>NumPy, version 1.9.3</li>
+  <li>
+    <p>scikit-learn, version 0.16.1</p>
+  </li>
+  <li>R, version 3.3.1</li>
+</ul>
+
+<h3 id="minimum-hardware-requirements-for-docker">Minimum Hardware Requirements For Docker</h3>
+<ul>
+  <li>10 GB of a free disk space</li>
+  <li>4 GB of RAM</li>
+</ul>
+
+<h3 id="minimum-hardware-requirements-for-vagrant">Minimum Hardware Requirements For Vagrant</h3>
+<ul>
+  <li>40 GB of a free disk space</li>
+  <li>4 GB of RAM</li>
+  <li>VirtualBox must be supported</li>
+</ul>
+
+<h3 id="local-cluster-limitations">Local Cluster Limitations</h3>
+
+<p>Seahorse works with YARN, Mesos, Spark Standalone and Local clusters.</p>
+
+<p>Seahorse running on bundled Local cluster was tested with datasets of the following shape:</p>
+
+<ul>
+  <li>DataFrame size: 500 MB</li>
+  <li>Number of rows in a DataFrame: 4 M</li>
+  <li>Number of columns in a DataFrame: 100</li>
+  <li>Row size: 1 MB</li>
+</ul>
+
+<p>This is just a reference point. Depending on the exact dataset,
+Local cluster may handle more data.
+It&#8217;s recommended to run a single session at a time.
+This guarantees that multiple sessions don&#8217;t compete for limited resources.</p>
+
+<p>To learn more about scaling up and using Seahorse in production,
+please <a target="_blank" href="https://deepsense.ai/contact">contact us for details</a>.</p>
+
+<h2 id="changelog">Changelog</h2>
+
+<h3 id="seahorse-14">Seahorse 1.4</h3>
+
+<h4 id="what-is-new">What is New</h4>
+
+<ul>
+  <li>Support for defining reusable <a href="./data_sources.html">data sources and sinks</a></li>
+  <li>Support for reading and writing from/to Google Spreadsheets</li>
+  <li>Support for user-defined operations via <a href="./sdk_user_guide.html">Software Developement Kit</a></li>
+  <li>Scheduled workflow execution with customizable Notebook-based email notifications</li>
+  <li>Completely redesigned UI for building workflows</li>
+  <li>Spark 2.0.2 support</li>
+  <li>Added operations:
+    <ul>
+      <li><code>Sort</code></li>
+      <li><code>SQL Combine</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="known-issues">Known Issues</h4>
+
+<ul>
+  <li>Seahorse Notebooks do not work with linux kernel 3.13.<br />
+We recommend upgrading the kernel to the newer version.</li>
+</ul>
+
+<h3 id="seahorse-13">Seahorse 1.3</h3>
+
+<h4 id="what-is-new-1">What is New</h4>
+
+<ul>
+  <li>Seahorse has been upgraded to Spark 2.0.0</li>
+  <li>Seahorse can connect to external clusters (YARN, Mesos, Standalone)</li>
+  <li>R support</li>
+  <li>Added library
+    <ul>
+      <li>Upload and download datasets between local machine and Seahorse Library</li>
+      <li>Read and write data between Seahorse Library and Spark Cluster</li>
+    </ul>
+  </li>
+  <li>Added operations:
+    <ul>
+      <li><code>R Notebook</code></li>
+      <li><code>R Column Transformation</code></li>
+      <li><code>R Transformation</code></li>
+      <li><code>R Evaluator</code></li>
+      <li><code>Compose Datetime</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="seahorse-12">Seahorse 1.2</h3>
+
+<h4 id="what-is-new-2">What is New</h4>
+<ul>
+  <li>Added operations:
+    <ul>
+      <li>Filtering:
+        <ul>
+          <li><code>Projection</code></li>
+        </ul>
+      </li>
+      <li>Transformation:
+        <ul>
+          <li>Feature Conversion:
+            <ul>
+              <li><code>Get From Vector</code></li>
+            </ul>
+          </li>
+          <li>Model Evaluation
+            <ul>
+              <li><code>Python Evaluator</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Extended <code>Split</code> and <code>Handle Missing Values</code> operations</li>
+  <li>Improved operations on vectors</li>
+  <li>Improved reports formatting</li>
+</ul>
+
+<h3 id="seahorse-11">Seahorse 1.1</h3>
+
+<h4 id="what-is-new-3">What is New</h4>
+<ul>
+  <li>Introduced model exporting.</li>
+  <li>Added operations:
+    <ul>
+      <li>Input/Output:
+        <ul>
+          <li><code>Read Transformer</code></li>
+          <li><code>Write Transformer</code></li>
+        </ul>
+      </li>
+      <li>Machine Learning:
+        <ul>
+          <li>Classification:
+            <ul>
+              <li><code>Decision Tree Classifier</code></li>
+              <li><code>Multilayer Perceptron Classifier</code></li>
+              <li><code>Naive Bayes</code></li>
+              <li><code>Random Forest Classifier</code></li>
+            </ul>
+          </li>
+          <li>Clustering:
+            <ul>
+              <li><code>LDA</code></li>
+            </ul>
+          </li>
+          <li>Feature Selection:
+            <ul>
+              <li><code>Chi-Squared Selector</code></li>
+            </ul>
+          </li>
+          <li>Model Evaluation:
+            <ul>
+              <li><code>Binary Classification Evaluator</code>
+                <ul>
+                  <li>F1 Score</li>
+                  <li>Precision</li>
+                  <li>Recall</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Regression:
+            <ul>
+              <li><code>AFT Survival Regression</code></li>
+              <li><code>Decision Tree Regression</code></li>
+            </ul>
+          </li>
+          <li>Transformation:
+            <ul>
+              <li>Custom:
+                <ul>
+                  <li>SQL:
+                    <ul>
+                      <li><code>SQL Column Transformation</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Feature Conversion:
+                <ul>
+                  <li><code>Quantile Discretizer</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Removed operations:
+    <ul>
+      <li>Transformation:
+        <ul>
+          <li>Feature Conversion:
+            <ul>
+              <li><code>Execute Mathematical Transformation</code> - replaced with more generic <code>SQL Column Transformation</code>.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Added a possibility to clone an existing workflow.</li>
+  <li>Introduced <a target="_blank" href="http://nvd3.org/">NVD3</a> library for charts presentation.</li>
+  <li>Added inference in <code>Custom Transformer</code>.</li>
+</ul>
+
+<h4 id="known-issues-1">Known Issues</h4>
+<ul>
+  <li><code>SQL Transformation</code> does not accept some valid identifiers as <code>DATAFRAME ID</code> parameter value.
+The problem is caused by an Apache Spark bug <a target="_blank" href="https://issues.apache.org/jira/browse/SPARK-12982">SPARK-12982</a>.</li>
+  <li><code>Fit</code> on <code>Linear Regression</code> can fail with
+<code>java.lang.AssertionError: assertion failed: lapack.dpotrs returned 65</code>.
+This problem is related to an Apache Spark issue <a target="_blank" href="https://issues.apache.org/jira/browse/SPARK-11918">SPARK-11918</a>.
+The workaround is to change <code>SOLVER</code> param of <code>Linear Regression</code> to <strong>l-bfgs</strong>.</li>
+</ul>
+
+<h3 id="seahorse-10">Seahorse 1.0</h3>
+
+<h4 id="what-is-new-4">What is New</h4>
+<ul>
+  <li>Introduced interactive session support.</li>
+  <li>Added a possibility to execute selected operations only.</li>
+  <li>Redesigned the Operation Catalogue to reflect the structure of Spark ML.</li>
+  <li>Integrated <a target="_blank" href="http://jupyter.org/">Jupyter Notebook</a>.</li>
+  <li>Introduced custom code execution by a <code>Custom Python Operation</code>
+and a <code>Custom Python Column Operation</code>.</li>
+  <li>Introduced <code>Custom Transformers</code>.</li>
+  <li>Added a <code>Grid Search</code> operation for automatic hyperparameter tuning.</li>
+  <li>Bundled set of workflow examples.</li>
+</ul>
+
+<h4 id="known-issues-2">Known Issues</h4>
+<ul>
+  <li><code>String Indexer</code>, when operating on 1 column, returns a faulty <code>SingleStringIndexerModel</code>
+which cannot be supplied to a <code>Transform</code> operation. However, the <code>StringIndexer</code>
+still can be used to transform a <code>DataFrame</code>.</li>
+  <li><code>Execute Mathematical Transformation</code> fails if executed on a <code>DataFrame</code> containing columns
+with certain chars (e.g. spaces) in their names.</li>
+</ul>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>

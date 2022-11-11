@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="">
+<!--
+  Git-sha: 85924ff87520d7d0eca8fc2a241fc37a5c278334
+-->
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migration Guide</title>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pygments-default.css">
+
+  <script src="../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+  <script src="../js/vendor/jquery-1.8.0.min.js"></script>
+  <script src="../js/layout-setup.js"></script>
+  <script src="../js/collapsable-content.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67859892-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body cz-shortcut-listen="true">
+  <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container head-of-page">
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="..">Overview</a></li>
+            <li class="editor-link"><a href="../getting_started.html">Getting Started</a></li>
+            <li class="editor-link"><a href="../deployment.html">Deployment</a></li>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examples<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../basic_examples.html">Basic Examples</a></li>
+                <li role="separator" class="divider"></li>
+                
+                  <li class=""><a href="../casestudies/credit_card_client_defaults.html">Credit Card Client Defaults</a></li>
+                
+                  <li class=""><a href="../casestudies/income_predicting.html">Income Prediction</a></li>
+                
+                  <li class=""><a href="../casestudies/mushrooms.html">Mushrooms</a></li>
+                
+                  <li class=""><a href="../casestudies/text_message_spam_detection.html">Text Message Spam Detection</a></li>
+                
+                  <li class=""><a href="../casestudies/wine_properties.html">Wine Properties</a></li>
+                
+              </ul>
+            </li>
+            <li class="active dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reference Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="../reference/server_mode.html">Server Mode</a></li>
+                <li class=""><a href="../reference/external_cluster.html">Using External Cluster</a></li>
+                <li class=""><a href="../reference/productionizing.html">Productionizing Workflows</a></li>
+                <li class=""><a href="../operations.html">Operations</a></li>
+                <li class=""><a href="../reference/data_sources.html">Data Sources</a></li>
+                <li class=""><a href="../reference/sdk_user_guide.html">SDK User Guide</a></li>
+                <li class=""><a href="../reference/release_notes.html">Release Notes</a></li>
+                <li class="active"><a href="../reference/migration_guide.html">Migration Guide</a></li>
+              </ul>
+            </li>
+            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+
+  
+
+  <div class="container" style="min-height: 100%;">
+
+    <section style="padding-bottom: 100px;" class="documentation-content">
+      
+      <h1 class="title">Migration Guide</h1>
+      
+      <p><strong>Table of Contents</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#migrating-data-from-seahorse-13-to-seahorse-14" id="markdown-toc-migrating-data-from-seahorse-13-to-seahorse-14">Migrating data from Seahorse 1.3 to Seahorse 1.4</a>    <ul>
+      <li><a href="#finding-your-old-data" id="markdown-toc-finding-your-old-data">Finding your old data</a></li>
+      <li><a href="#inserting-the-data-into-the-new-seahorse-instance" id="markdown-toc-inserting-the-data-into-the-new-seahorse-instance">Inserting the data into the new Seahorse instance</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="migrating-data-from-seahorse-13-to-seahorse-14">Migrating data from Seahorse 1.3 to Seahorse 1.4</h2>
+<p>The data that can be migrated from Seahorse 1.3 to Seahorse 1.4 includes:</p>
+
+<ol>
+  <li>the database containing the workflow, cluster and notebook information</li>
+  <li>the library containing your data files</li>
+</ol>
+
+<h3 id="finding-your-old-data">Finding your old data</h3>
+<ul>
+  <li>If using <code>docker-compose.yml</code>:
+    <ul>
+      <li>Database is located in <code>h2-data</code> directory located next to your old <code>docker-compose.yml</code>.</li>
+      <li>To find Library data, locate your old library docker volume: <code>docker volume inspect DIRECTORYNAME_library</code> (usually <code>/var/lib/docker/volumes/DIRECTORYNAME_library/_data/</code>),
+  where DIRECTORYNAME should be replaced by the name of the immediate directory containing docker-compose, e.g. if your <code>docker-compose.yml</code> is placed in <code>/exa/mple/path/</code> , DIRECTORYNAME would be &#8220;path&#8221;.</li>
+    </ul>
+  </li>
+  <li>If using <code>Vagrantfile</code>:
+    <ul>
+      <li>Database is located in the VM&#8217;s filesystem, in <code>/resources/h2-data</code>.</li>
+      <li>Library data is located in the Vagrant VM&#8217;s filesystem, in <code>/var/lib/docker/volumes/resources_library/_data</code>.</li>
+    </ul>
+
+    <p>Note that you need to ssh into your Vagrant to access that data.</p>
+  </li>
+</ul>
+
+<h3 id="inserting-the-data-into-the-new-seahorse-instance">Inserting the data into the new Seahorse instance</h3>
+<p>Create new <code>h2-data</code> and <code>library</code> directories next to your new <code>docker-compose.yml</code> or <code>Vagrantfile</code>.
+Move the retrieved workflow database data into the <code>h2-data</code> directory and retrieved library files into the <code>library</code> directory.</p>
+
+<p>If some of these directories already exist, you can replace them with the retrieved ones. Note that in this case all the work done in Seahorse 1.4 up to this point will be lost.</p>
+
+<p>Seahorse will automatically convert 1.3-compatible data into the new format upon launch.</p>
+
+    </section>
+  </div>
+
+  <footer class="col-sm-12">
+    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
+          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
+          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
+          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    </p>
+  </footer>
+</body>
+
+</html>
