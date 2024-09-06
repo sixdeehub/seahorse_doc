@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+       
           </ul>
         </div>
       </div>
@@ -101,13 +101,13 @@
       
       <h1 class="title">Data Sources</h1>
       
-      <p>Seahorse supports Data Sources of the following types:</p>
+      <p>Analytical Engine supports Data Sources of the following types:</p>
 
 <ul>
   <li><strong>External File</strong> - file accessibly via HTTP, HTTPS or FTP.</li>
-  <li><strong>Library File</strong> - file uploaded to Seahorse File Library</li>
+  <li><strong>Library File</strong> - file uploaded to Analytical Engine File Library</li>
   <li><strong>HDFS</strong> - file on Hadoop Distributed File System</li>
-  <li><strong>JDBC</strong> - relational database supporting JDBC. <a href="#setting-up-jdbc-data-source-with-custom-jdbc-drivers">Requires adding JDBC driver JAR to Seahorse</a></li>
+  <li><strong>JDBC</strong> - relational database supporting JDBC. <a href="#setting-up-jdbc-data-source-with-custom-jdbc-drivers">Requires adding JDBC driver JAR to Analytical Engine</a></li>
   <li><strong>Google Spreadsheet</strong> - <a href="#setting-up-a-google-spreadsheet-data-source">Requires setting up a Google Service Account</a></li>
 </ul>
 
@@ -124,7 +124,7 @@
 
 <p>Reading data from and writing data to JDBC-compatible databases is supported.</p>
 
-<p>This functionality requires placing adequate JDBC driver JAR file to Seahorse shared folder <code>jars</code>.
+<p>This functionality requires placing adequate JDBC driver JAR file to Analytical Engine shared folder <code>jars</code>.
 That file placement has to be performed before starting editing workflow that uses JDBC connection
 (otherwise, it will be required to stop running session and start it again).</p>
 
@@ -133,9 +133,9 @@ That file placement has to be performed before starting editing workflow that us
 <p>Google Sheets Data Source has two parameters that require more detailed description:</p>
 
 <ul>
-  <li><strong>Google Service Account Credentials JSON</strong> - Seahorse must authorize itself as a Google User to the Google Services. <br />
-This JSON has all data required by Google Services for Seahorse to authorize itself.</li>
-  <li><strong>Google Spreadsheet link</strong> - note that this Google Spreadsheet must be shared with Seahorse Google User.</li>
+  <li><strong>Google Service Account Credentials JSON</strong> - Analytical Engine must authorize itself as a Google User to the Google Services. <br />
+This JSON has all data required by Google Services for Analytical Engine to authorize itself.</li>
+  <li><strong>Google Spreadsheet link</strong> - note that this Google Spreadsheet must be shared with Analytical Engine Google User.</li>
 </ul>
 
 <p><br /></p>
@@ -146,8 +146,8 @@ This JSON has all data required by Google Services for Seahorse to authorize its
 </div>
 <p><br /></p>
 
-<p>In the following sections you will learn how to set up a Google Service Account for the Seahorse instance and
-how to share the spreadsheets with the Seahorse instance.</p>
+<p>In the following sections you will learn how to set up a Google Service Account for the Analytical Engine instance and
+how to share the spreadsheets with the Analytical Engine instance.</p>
 
 <h3 id="setting-up-a-google-service-account">Setting up a Google Service Account</h3>
 
@@ -179,7 +179,7 @@ Store downloaded JSON credentials file securely. You will need that JSON credent
   <li>Now you can include the JSON content into Google Service Account Credentials JSON field of the Data Source</li>
 </ol>
 
-<h3 id="sharing-google-spreadsheet-with-you-seahorse-instance">Sharing Google Spreadsheet with you Seahorse Instance</h3>
+<h3 id="sharing-google-spreadsheet-with-you-seahorse-instance">Sharing Google Spreadsheet with you Analytical Engine Instance</h3>
 
 <ol>
   <li>
@@ -209,7 +209,7 @@ list of Service Accounts
   </li>
   <li>
     <p>You can use Google Spreadsheet and you Google Service Account credentials to define a
-Google Spreadsheet Data Source in Seahorse.</p>
+Google Spreadsheet Data Source in Analytical Engine.</p>
 
     <p><br /></p>
     <div class="align-left-indented">
@@ -221,14 +221,14 @@ Google Spreadsheet Data Source in Seahorse.</p>
   </li>
 </ol>
 
-<p>Now it&#8217;s ready to use in the Seahorse!</p>
+<p>Now it&#8217;s ready to use in the Analytical Engine!</p>
 
 <h2 id="supported-file-formats-details">Supported File Formats Details</h2>
 
 <h3 id="csv"><code>CSV</code></h3>
 <p><a target="_blank" href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values</a></p>
 
-<p>When reading a CSV file, Seahorse infers column types.
+<p>When reading a CSV file, Analytical Engine infers column types.
 If a column contains values of multiple types, the narrowest possible type will be chosen,
 so that all the values can be represented in that type.</p>
 
@@ -239,7 +239,7 @@ case, they are treated as empty strings.</p>
 inferred as <code>Boolean</code>.
 In particular, a column consisting of empty cells will be inferred as <code>Boolean</code> with <code>null</code> values only.</p>
 
-<p>While reading, Seahorse assumes that each row in the file has the same number of fields.
+<p>While reading, Analytical Engine assumes that each row in the file has the same number of fields.
 When this condition is not met, the behavior is undefined.</p>
 
 <p>If the file defines column names, they will be used in the <code>DataFrame</code>.
@@ -268,7 +268,7 @@ parsed as <code>"x"</code>, since <code>\"</code> inside an already quoted value
 
 <p>Note that <code>JSON</code> file format does not preserve the order of columns.</p>
 
-<p>When saving a <code>DataFrame</code>, Seahorse converts <code>Timestamp</code> columns to <code>String</code> type
+<p>When saving a <code>DataFrame</code>, Analytical Engine converts <code>Timestamp</code> columns to <code>String</code> type
 (values of that columns are converted to their string representations by Apache Spark).</p>
 
 <p><code>Null</code> values in JSON are omitted. This might result in schema mismatch if all values in particular
@@ -278,10 +278,8 @@ column are <code>null</code> (that column will be omitted in output JSON file).<
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024
+         
     </p>
   </footer>
 </body>

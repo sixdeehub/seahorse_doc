@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          
           </ul>
         </div>
       </div>
@@ -99,15 +99,15 @@
 
     <section style="padding-bottom: 100px;" class="documentation-content">
       
-      <h1 class="title">Seahorse in Server Mode</h1>
+      <h1 class="title">Analytical Engine in Server Mode</h1>
       
-      <p><a href="../deployment.html#dockerized-seahorse">Dockerized Seahorse</a>
+      <p><a href="../deployment.html#dockerized-seahorse">Dockerized Analytical Engine</a>
 is designed to work as a server application,
-which allows multiple users to access a single instance of Seahorse.</p>
+which allows multiple users to access a single instance of Analytical Engine.</p>
 
-<p>Enabling Server Mode requires telling Seahorse the IP address it should be available at.
+<p>Enabling Server Mode requires telling Analytical Engine the IP address it should be available at.
 By default, it listens only for local connections. Below you can find a comparison of relevant portions of the
-<code>docker-compose.yml</code> file with the assumption that Seahorse should be accessible under all IP addresses
+<code>docker-compose.yml</code> file with the assumption that Analytical Engine should be accessible under all IP addresses
 of the machine.</p>
 
 <div class="flex-adaptable-row-container">
@@ -138,15 +138,15 @@ of the machine.</p>
 </div>
 </div>
 
-<p>Additionally, to start Seahorse in daemon mode, you can run <code>docker-compose</code> with <code>-d</code> flag:</p>
+<p>Additionally, to start Analytical Engine in daemon mode, you can run <code>docker-compose</code> with <code>-d</code> flag:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker-compose up -d</code></pre></figure>
 
-<p>This will start containers with Seahorse in the background.</p>
+<p>This will start containers with Analytical Engine in the background.</p>
 
-<p>Seahorse provides multi-user capability, useful in server mode. Multi-user allows creating workflows protected from modifications by other users.</p>
+<p>Analytical Engine provides multi-user capability, useful in server mode. Multi-user allows creating workflows protected from modifications by other users.</p>
 
-<p>Authorization service offers registration page to create a new account confirmed by sending an activation email. You have to log on to an account before using Seahorse.</p>
+<p>Authorization service offers registration page to create a new account confirmed by sending an activation email. You have to log on to an account before using Analytical Engine.</p>
 
 <p>To enable the authorization service, the <code>docker-compose.yml</code> file should be modified as described below.</p>
 
@@ -184,7 +184,7 @@ Link for changing the password will be sent to the address provided in <code>doc
     <span class="l-Scalar-Plain">...</span>
     <span class="l-Scalar-Plain">environment</span><span class="p-Indicator">:</span>
       <span class="l-Scalar-Plain">ENABLE_AUTHORIZATION</span><span class="p-Indicator">:</span> <span class="s">&#39;true&#39;</span>
-      <span class="l-Scalar-Plain">SEAHORSE_ADMIN_EMAIL</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">your mail here</span><span class="p-Indicator">}</span>
+      <span class="l-Scalar-Plain">Analytical_Engine_ADMIN_EMAIL</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span><span class="nv">your mail here</span><span class="p-Indicator">}</span>
   <span class="l-Scalar-Plain">...</span>
   <span class="l-Scalar-Plain">proxy</span><span class="p-Indicator">:</span>
   <span class="l-Scalar-Plain">...</span>
@@ -196,32 +196,15 @@ Link for changing the password will be sent to the address provided in <code>doc
 </div>
 </div>
 
-<p>To learn more about using Seahorse in production and such features as security, additional authorization methods (LDAP, Google, etc.) or custom deployment requirements,
-please <a target="_blank" href="https://deepsense.ai/contact">contact us for details</a>.</p>
 
-<div class="contact-block">
-  <div class="contact-info">
-    <p>Learn more about Seahorse enterprise-scale deployments
-      - includes customized set-up, security, integration and 24/7 support.</p>
-  </div>
-  <div class="contact-block-container">
-    <div class="contact-block-button">
-      <a target="_blank" href="https://deepsense.ai/contact">
-        Contact us for details!
-      </a>
-    </div>
-  </div>
-</div>
 
 
     </section>
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024
+         
     </p>
   </footer>
 </body>

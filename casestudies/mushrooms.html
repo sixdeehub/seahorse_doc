@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+           
           </ul>
         </div>
       </div>
@@ -136,7 +136,7 @@
   </div>
   <p>
     This is a complete experiment that generates a mushroom classification model.
-    The workflow file is included in Seahorse,
+    The workflow file is included in Analytical Engine,
     but we will also show you how to create that experiment step-by-step.
   </p>
 </div>
@@ -146,7 +146,7 @@
 <h3 id="reading-data">Reading Data</h3>
 
 <p>The data is provided in a form of a 23-column, comma-separated CSV-like file with column names in the first line.
-To work with the dataset, it has to be loaded into Seahorse. This can be done by a
+To work with the dataset, it has to be loaded into Analytical Engine. This can be done by a
 <a href="../operations/read_dataframe.html">Read DataFrame</a> operation.
 Let’s place it on the canvas using drag-and-drop from the operations palette.
 To load the data, we need to create a Data Source corresponding to the file.
@@ -155,7 +155,7 @@ To load the data, we need to create a Data Source corresponding to the file.
 <p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/mushrooms/data_source_creation.png" /></p>
 
 <p>After preparing Data Source for Read DataFrame, the operation is ready to be executed
- -– simply click the RUN button in the top Seahorse toolbar.
+ -– simply click the RUN button in the top Analytical Engine toolbar.
 If you have much more operations on the canvas and you are interested in the results of only one operation,
 you can use partial execution of the workflow. Simply select that operation before clicking RUN.
 When the execution ends, a report of the operation will be available.
@@ -188,7 +188,7 @@ by the Read DataFrame operation.</p>
 
 <p>In the first column we have labels stating to which class a specific sample belongs (possible values: <code>edible</code> or <code>poisonous</code>).
 We have discovered that all columns have string values.
-To perform classification, Seahorse needs a numeric label column and a vector of numerics as features column.
+To perform classification, Analytical Engine needs a numeric label column and a vector of numerics as features column.
 We need to map string values to numbers and assembly features into a single vector column.
 This can be done by combining multiple operations
  – <a href="../operations/string_indexer.html">String Indexer</a>
@@ -339,10 +339,8 @@ but most of all – due to legal responsibility of those decisions.</p>
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024 
+         
     </p>
   </footer>
 </body>

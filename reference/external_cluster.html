@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+           
           </ul>
         </div>
       </div>
@@ -103,35 +103,34 @@
       
       <h2 id="overview">Overview</h2>
 
-<p>Seahorse comes bundled with a local, single-node Spark cluster to allow you to get started quickly.
-To assess its full potential, however, configure Seahorse to utilize external clusters.</p>
+<p>Analytical Engine comes bundled with a local, single-node Spark cluster to allow you to get started quickly.
+To assess its full potential, however, configure Analytical Engine to utilize external clusters.</p>
 
-<p>In order to connect to a cluster, the machine with Seahorse must be addressable from every node of the cluster.
-This is because Seahorse runs applications in client mode - your machine runs Spark driver.</p>
+<p>In order to connect to a cluster, the machine with Analytical Engine must be addressable from every node of the cluster.
+This is because Analytical Engine runs applications in client mode - your machine runs Spark driver.</p>
 
-<p>In Seahorse Editor, you can specify all options needed to connect to your cluster.
+<p>In Analytical Engine Editor, you can specify all options needed to connect to your cluster.
 Aside from the <code>Spark Master URL</code>, probably the most important option is the <code>User IP</code>.
-It has to be set to such an IP of the machine with Seahorse that is visible from the cluster.</p>
+It has to be set to such an IP of the machine with Analytical Engine that is visible from the cluster.</p>
 
-<p>Conveniently, Seahorse allows you to store configurations for various clusters.</p>
+<p>Conveniently, Analytical Engine allows you to store configurations for various clusters.</p>
 
 <div class="centered-container">
   <p><img src="../img/cluster_presets.png" alt="Cluster Presets" class="centered-image img-responsive bordered-image" />
-  <em>Cluster Presets in Seahorse</em></p>
+  <em>Cluster Presets in Analytical Engine</em></p>
 </div>
 
-<h2 id="external-clusters-with-seahorse-as-a-vagrant-image">External Clusters with Seahorse as a Vagrant Image</h2>
+<h2 id="external-clusters-with-seahorse-as-a-vagrant-image">External Clusters with Analytical Engine as a Vagrant Image</h2>
 
 <p>While working with external clusters is straight-forward when running
-<a href="../deployment.html#dockerized-seahorse">Dockerized Seahorse</a>,
-it&#8217;s also possible using <a href="../deployment.html#seahorse-as-a-vagrant-image">Seahorse as a Vagrant Image</a>.
+<a href="../deployment.html#dockerized-seahorse">Dockerized Analytical Engine</a>,
+it&#8217;s also possible using <a href="../deployment.html#seahorse-as-a-vagrant-image">Analytical Engine as a Vagrant Image</a>.
 There is a commented line in the <code>Vagrantfile</code>.
 It needs to be uncommented in order for the VM to receive its own IP address, that is visible from
 the Spark cluster.</p>
 
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"> <span class="l-Scalar-Plain">...</span>
  <span class="l-Scalar-Plain"># Uncomment this line if you want this VM to connect directly to your network.</span>
- <span class="l-Scalar-Plain"># Visit http://seahorse.deepsense.ai for details.</span>
  <span class="l-Scalar-Plain">config.vm.network &quot;public_network&quot;, use_dhcp_assigned_default_route</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
  <span class="l-Scalar-Plain">...</span></code></pre></figure>
 
@@ -150,7 +149,7 @@ You can obtain it by accessing the VM with <code>vagrant ssh</code> and using th
 <h2 id="troubleshooting">Troubleshooting</h2>
 
 <p>In case of any problems with connecting to external cluster, it is helpful to read error logs
-produced by the Spark application. Go to your Seahorse startup directory
+produced by the Spark application. Go to your Analytical Engine startup directory
 (where you keep either <code>docker-compose.yml</code> or <code>Vagrantfile</code>).
 The relevant logs can be found in <code>spark_applications_logs</code> directory.</p>
 
@@ -158,10 +157,8 @@ The relevant logs can be found in <code>spark_applications_logs</code> directory
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024
+         
     </p>
   </footer>
 </body>

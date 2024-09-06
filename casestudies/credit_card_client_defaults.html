@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+          
           </ul>
         </div>
       </div>
@@ -123,7 +123,7 @@ Department of Civil Engineering, Tamkang University, Taiwan.</p>
 <h3 id="reading-data">Reading Data</h3>
 
 <p>The data is provided in a form of a 25-column, comma-separated CSV-like file with column names in the first line.
-To work with the dataset, it has to be loaded into Seahorse. This can be done by a
+To work with the dataset, it has to be loaded into Analytical Engine. This can be done by a
 <a href="../operations/read_dataframe.html">Read DataFrame</a> operation.
 Let’s place it on the canvas using drag-and-drop from the operations palette.
 To load the data, we need to provide the correct path to the file.</p>
@@ -135,7 +135,7 @@ Create &#8220;External file&#8221; data source and fill its &#8220;Source&#8221;
 
 <p>Name it, e.g. &#8220;Credit card data&#8221;, click &#8220;Ok&#8221; and select your newly created data source.
 Having loaded the data, we proceed to its initial exploration.
-To this end, let’s use the <a href="../operations/r_notebook.html">R Notebook</a> block from Seahorse’s operations palette.</p>
+To this end, let’s use the <a href="../operations/r_notebook.html">R Notebook</a> block from Analytical Engine operations palette.</p>
 
 <p><img class="bordered-image centered-image img-responsive spacer" src="../img/usecases/credit_defaults/r_notebook_block.png" /></p>
 
@@ -212,16 +212,14 @@ and are equal about 67% and 37%, respectively.</p>
 <p>We presented analysis of prediction of defaults of a bank’s customers. Throughout the way, we used SparkR for custom operations
 and exploratory data analysis. We trained the model, optimized and evaluated it. Based on costs associated with customers’ defaults,
 we can tweak precision and recall by, for example, adjusting the threshold level for probability of the default prediction and the
-final label (no default vs default) produced by the model. We encourage you to try out your own ideas - the complete workflow is included in Seahorse.</p>
+final label (no default vs default) produced by the model. We encourage you to try out your own ideas - the complete workflow is included in Analytical Engine.</p>
 
     </section>
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024 
+         
     </p>
   </footer>
 </body>

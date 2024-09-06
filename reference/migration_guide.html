@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class="active"><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+  
           </ul>
         </div>
       </div>
@@ -104,15 +104,15 @@
       <p><strong>Table of Contents</strong></p>
 
 <ul id="markdown-toc">
-  <li><a href="#migrating-data-from-seahorse-13-to-seahorse-14" id="markdown-toc-migrating-data-from-seahorse-13-to-seahorse-14">Migrating data from Seahorse 1.3 to Seahorse 1.4</a>    <ul>
+  <li><a href="#migrating-data-from-seahorse-13-to-seahorse-14" id="markdown-toc-migrating-data-from-seahorse-13-to-seahorse-14">Migrating data from Analytical Engine 1.3 to Analytical Engine 1.4</a>    <ul>
       <li><a href="#finding-your-old-data" id="markdown-toc-finding-your-old-data">Finding your old data</a></li>
-      <li><a href="#inserting-the-data-into-the-new-seahorse-instance" id="markdown-toc-inserting-the-data-into-the-new-seahorse-instance">Inserting the data into the new Seahorse instance</a></li>
+      <li><a href="#inserting-the-data-into-the-new-seahorse-instance" id="markdown-toc-inserting-the-data-into-the-new-seahorse-instance">Inserting the data into the new Analytical Engine instance</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="migrating-data-from-seahorse-13-to-seahorse-14">Migrating data from Seahorse 1.3 to Seahorse 1.4</h2>
-<p>The data that can be migrated from Seahorse 1.3 to Seahorse 1.4 includes:</p>
+<h2 id="migrating-data-from-seahorse-13-to-seahorse-14">Migrating data from Analytical Engine 1.3 to Analytical Engine 1.4</h2>
+<p>The data that can be migrated from Analytical Engine 1.3 to Analytical Engine 1.4 includes:</p>
 
 <ol>
   <li>the database containing the workflow, cluster and notebook information</li>
@@ -138,22 +138,19 @@
   </li>
 </ul>
 
-<h3 id="inserting-the-data-into-the-new-seahorse-instance">Inserting the data into the new Seahorse instance</h3>
+<h3 id="inserting-the-data-into-the-new-seahorse-instance">Inserting the data into the new Analytical Engine instance</h3>
 <p>Create new <code>h2-data</code> and <code>library</code> directories next to your new <code>docker-compose.yml</code> or <code>Vagrantfile</code>.
 Move the retrieved workflow database data into the <code>h2-data</code> directory and retrieved library files into the <code>library</code> directory.</p>
 
-<p>If some of these directories already exist, you can replace them with the retrieved ones. Note that in this case all the work done in Seahorse 1.4 up to this point will be lost.</p>
+<p>If some of these directories already exist, you can replace them with the retrieved ones. Note that in this case all the work done in Analytical Engine 1.4 up to this point will be lost.</p>
 
-<p>Seahorse will automatically convert 1.3-compatible data into the new format upon launch.</p>
+<p>Analytical Engine will automatically convert 1.3-compatible data into the new format upon launch.</p>
 
     </section>
   </div>
-
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024
+         
     </p>
   </footer>
 </body>

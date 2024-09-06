@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seahorse Deployment</title>
+  <title>Analytical Engine Deployment</title>
   <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href="."><img src="./img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="./img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,6 @@
                 <li class=""><a href="./reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -99,19 +98,19 @@
 
     <section style="padding-bottom: 100px;" class="documentation-content">
       
-      <h1 class="title">Seahorse Deployment</h1>
+      <h1 class="title">Analytical Engine Deployment</h1>
       
       <p><strong>Table of Contents</strong></p>
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#dockerized-seahorse" id="markdown-toc-dockerized-seahorse">Dockerized Seahorse</a>    <ul>
+  <li><a href="#dockerized-Analytical Engine" id="markdown-toc-dockerized-Analytical Engine">Dockerized Analytical Engine</a>    <ul>
       <li><a href="#installation" id="markdown-toc-installation">Installation</a></li>
       <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
       <li><a href="#conflicting-ports" id="markdown-toc-conflicting-ports">Conflicting Ports</a></li>
     </ul>
   </li>
-  <li><a href="#seahorse-as-a-vagrant-image" id="markdown-toc-seahorse-as-a-vagrant-image">Seahorse as a Vagrant Image</a>    <ul>
+  <li><a href="#Analytical Engine-as-a-vagrant-image" id="markdown-toc-Analytical Engine-as-a-vagrant-image">Analytical Engine as a Vagrant Image</a>    <ul>
       <li><a href="#installation-1" id="markdown-toc-installation-1">Installation</a></li>
       <li><a href="#troubleshooting-1" id="markdown-toc-troubleshooting-1">Troubleshooting</a></li>
       <li><a href="#conflicting-ports-1" id="markdown-toc-conflicting-ports-1">Conflicting Ports</a></li>
@@ -122,15 +121,15 @@
       </li>
     </ul>
   </li>
-  <li><a href="#seahorse-in-production-environment" id="markdown-toc-seahorse-in-production-environment">Seahorse in Production Environment</a></li>
+  <li><a href="#seahorse-in-production-environment" id="markdown-toc-seahorse-in-production-environment">Analytical Engine in Production Environment</a></li>
 </ul>
 
 <h2 id="overview">Overview</h2>
 
-<p>You can install and run Seahorse on your local computer
+<p>You can install and run Analytical Engine on your local computer
 or set it up in a server mode (for details see <a href="reference/server_mode.html">Server Mode</a> section).</p>
 
-<p>Seahorse
+<p>Analytical Engine
 * works with self-contained local Spark;
 * can connect to any external Spark cluster (YARN, Mesos or Spark Standalone);
 * works on multiple platforms, including
@@ -138,20 +137,20 @@ or set it up in a server mode (for details see <a href="reference/server_mode.ht
 <img src="img/os_icons/osx.png" alt="OS X" height="18" width="18" /> OS X and
 <img src="img/os_icons/linux.png" alt="Linux" height="18" width="18" /> Linux.</p>
 
-<p>If you want to install Seahorse on <img src="img/os_icons/linux.png" alt="Linux" height="18" width="18" /> Linux
-you should use <a href="#dockerized-seahorse">Dockerized Seahorse</a>.</p>
+<p>If you want to install Analytical Engine on <img src="img/os_icons/linux.png" alt="Linux" height="18" width="18" /> Linux
+you should use <a href="#dockerized-seahorse">Dockerized Analytical Engine</a>.</p>
 
-<p>If you want to install Seahorse on
+<p>If you want to install Analytical Engine on
 <img src="img/os_icons/osx.png" alt="OS X" height="18" width="18" /> OS X or
 <img src="img/os_icons/windows.png" alt="Windows" height="18" width="18" /> Windows
-you should use <a href="#seahorse-as-a-vagrant-image">Seahorse as a Vagrant Image</a>.</p>
+you should use <a href="#seahorse-as-a-vagrant-image">Analytical Engine as a Vagrant Image</a>.</p>
 
-<p>You can also build Seahorse from source code. Follow instructions at
+<p>You can also build Analytical Engine from source code. Follow instructions at
 <a target="_blank" href="https://github.com/deepsense-ai/seahorse/">
-Seahorse github repo
+  Analytical Engine github repo
 </a>.</p>
 
-<h2 id="dockerized-seahorse">Dockerized Seahorse</h2>
+<h2 id="dockerized-seahorse">Dockerized Analytical Engine</h2>
 
 <p><strong>Works on:</strong> <img src="img/os_icons/linux.png" alt="Linux" height="18" width="18" /> Linux</p>
 
@@ -176,14 +175,14 @@ installing a complex application along with its dependencies without cluttering 
 or <a target="_blank" href="https://www.mozilla.org/en-US/firefox/">Mozilla Firefox</a> (version &gt;= 48)</li>
 </ul>
 
-<p><strong>Running Seahorse</strong></p>
+<p><strong>Running Analytical Engine</strong></p>
 
 <ol>
   <li><a target="_blank" href="https://get-seahorse.deepsense.ai/">Download</a>
 the <code>docker-compose.yml</code> file, which serves as a config for Docker Compose (this may take a
 few minutes).</li>
   <li>Run <code>docker-compose up</code> in the directory containing the downloaded file.</li>
-  <li>When Seahorse is ready, open it in your browser. It is accessible at
+  <li>When Analytical Engine is ready, open it in your browser. It is accessible at
  <a target="_blank" href="http://localhost:33321">http://localhost:33321.
  </a></li>
 </ol>
@@ -191,29 +190,28 @@ few minutes).</li>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <ul>
   <li>
-    <p>In case of unexpected errors during Seahorse usage, try rebooting Dockerized Seahorse by running:</p>
+    <p>In case of unexpected errors during Analytical Engine usage, try rebooting Dockerized Analytical Engine by running:</p>
 
-    <pre><code>  docker-compose down
-  docker-compose up
+    <pre><code>  docker-compose down docker-compose up
 </code></pre>
   </li>
   <li>
     <p>Bug reports and all other feedback can be sent using the
-<a target="_blank" href="https://community.seahorse.deepsense.ai">Feedback</a>
-option in the Seahorse Editor in the upper-left corner.</p>
+<a target="_blank" href="https://www.6dtechnologies.com/contact-us/">Feedback</a>
+option in the Analytical Engine Editor in the upper-left corner.</p>
   </li>
 </ul>
 
 <h3 id="conflicting-ports">Conflicting Ports</h3>
 
-<p>Seahorse, by default listens on port <code>33321</code>. In rare cases this
+<p>Analytical Engine, by default listens on port <code>33321</code>. In rare cases this
 configuration may conflict with services running on your computer. This can be easily remedied by
 replacing <code>33321</code> with a port of your choosing in <code>docker-compose.yml</code> file. After restarting
-Seahorse, it will be available under the address with the new port.</p>
+Analytical Engine, it will be available under the address with the new port.</p>
 
 <p><br /></p>
 
-<h2 id="seahorse-as-a-vagrant-image">Seahorse as a Vagrant Image</h2>
+<h2 id="seahorse-as-a-vagrant-image">Analytical Engine as a Vagrant Image</h2>
 
 <p><strong>Works on:</strong> <img src="img/os_icons/osx.png" alt="OS X" height="18" width="18" /> OS X,
               <img src="img/os_icons/windows.png" alt="Windows" height="18" width="18" /> Windows,
@@ -222,7 +220,7 @@ Seahorse, it will be available under the address with the new port.</p>
 <h3 id="installation-1">Installation</h3>
 
 <p>On some operating systems Docker is not supported natively.
-That&#8217;s why we also distribute Seahorse as a Vagrant
+That&#8217;s why we also distribute Analytical Engine as a Vagrant
 image.</p>
 
 <p><strong>Prerequisites</strong></p>
@@ -235,36 +233,36 @@ there is an issue with version 5.0.12)</li>
 or <a target="_blank" href="https://www.mozilla.org/en-US/firefox/">Mozilla Firefox</a> (version &gt;= 48)</li>
 </ul>
 
-<p><strong>Running Seahorse</strong></p>
+<p><strong>Running Analytical Engine</strong></p>
 
 <ol>
   <li><a target="_blank" href="https://get-seahorse.deepsense.ai/">Download</a>
-the Vagrantfile that will allow you to spin up Seahorse’s virtual machine.</li>
+the Vagrantfile that will allow you to spin up Analytical Engine's virtual machine.</li>
   <li>Run <code>vagrant up</code> in the directory containing <code>Vagrantfile</code>. This may take a few minutes.</li>
-  <li>When Seahorse is ready, go to
+  <li>When Analytical Engine is ready, go to
 <a target="_blank" href="http://localhost:33321">http://localhost:33321</a>
 in your browser.</li>
 </ol>
 
 <h3 id="troubleshooting-1">Troubleshooting</h3>
 <ul>
-  <li>If you cannot start the Seahorse virtual machine, please check if virtualization is enabled in BIOS.</li>
+  <li>If you cannot start the Analytical Engine virtual machine, please check if virtualization is enabled in BIOS.</li>
   <li>
-    <p>In case of unexpected errors during Seahorse usage, try rebooting Seahorse by running:</p>
+    <p>In case of unexpected errors during Analytical Engine usage, try rebooting Analytical Engine by running:</p>
 
     <pre><code>  vagrant reload
 </code></pre>
   </li>
   <li>Bug reports and all other feedback can be sent using the
 <a target="_blank" href="https://community.seahorse.deepsense.ai">Feedback</a>
-option in the Seahorse Editor in the upper-left corner.</li>
+option in the Analytical Engine Editor in the upper-left corner.</li>
 </ul>
 
 <h3 id="conflicting-ports-1">Conflicting Ports</h3>
-<p>Seahorse, by default listens on port <code>33321</code>. In rare cases this
+<p>Analytical Engine, by default listens on port <code>33321</code>. In rare cases this
 configuration may conflict with services running on your computer. This can be easily remedied by
 replacing <code>33321</code> with a port of your choosing in <code>Vagrantfile</code>. After restarting
-Seahorse, it will be available under the address with the new port.</p>
+Analytical Engine, it will be available under the address with the new port.</p>
 
 <h3 id="notes-for-windows-users">Notes for Windows Users</h3>
 
@@ -297,7 +295,7 @@ Failed writing body (0 != 16383)
 
 <h4 id="problem-with-downloading-vagrant-box">Problem with Downloading Vagrant Box</h4>
 
-<p>Vagrant fails to download Seahorse Box file, but does not print any specific error message.</p>
+<p>Vagrant fails to download Analytical Engine Box file, but does not print any specific error message.</p>
 
 <pre><code>An error occurred while downloading the remote file. The error
 message, if any, is reproduced below. Please fix this error and try
@@ -309,34 +307,14 @@ again.
 install
 <a target="_blank" href="http://www.microsoft.com/en-us/download/confirmation.aspx?id=8328">Microsoft Visual C++ 2010 SP1 Redistributable Package (x86)</a>.</p>
 
-<h2 id="seahorse-in-production-environment">Seahorse in Production Environment</h2>
-
-<p>To learn more about scaling up and using Seahorse in production,
-please <a target="_blank" href="https://deepsense.ai/contact">contact us for details</a>.</p>
-
-<div class="contact-block">
-  <div class="contact-info">
-    <p>Learn more about Seahorse enterprise-scale deployments
-      - includes customized set-up, security, integration and 24/7 support.</p>
-  </div>
-  <div class="contact-block-container">
-    <div class="contact-block-button">
-      <a target="_blank" href="https://deepsense.ai/contact">
-        Contact us for details!
-      </a>
-    </div>
-  </div>
-</div>
 
 
     </section>
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="./img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="./img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="./img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024 
+         
     </p>
   </footer>
 </body>

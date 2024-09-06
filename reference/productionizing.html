@@ -39,7 +39,7 @@
       <div class="container head-of-page">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href=".."><img src="../img/seahorse_logo.png" alt="deepsense.ai Seahorse"></a>
+            <a href="."><img src="../img/seahorse_logo.png" alt="deepsense.ai Analytical Engine" style="width: 200px; height: auto;"></a>
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -84,7 +84,7 @@
                 <li class=""><a href="../reference/migration_guide.html">Migration Guide</a></li>
               </ul>
             </li>
-            <li><a href="https://deepsense.ai/contact">Contact Us</a></li>
+           
           </ul>
         </div>
       </div>
@@ -105,12 +105,12 @@
 
 <ul id="markdown-toc">
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
-  <li><a href="#get-seahorse-batch-workflow-executor" id="markdown-toc-get-seahorse-batch-workflow-executor">Get Seahorse Batch Workflow Executor</a>    <ul>
+  <li><a href="#get-seahorse-batch-workflow-executor" id="markdown-toc-get-seahorse-batch-workflow-executor">Get Analytical Engine Batch Workflow Executor</a>    <ul>
       <li><a href="#use-precompiled-binaries" id="markdown-toc-use-precompiled-binaries">Use Precompiled Binaries</a></li>
       <li><a href="#build-from-source" id="markdown-toc-build-from-source">Build from Source</a></li>
     </ul>
   </li>
-  <li><a href="#how-to-run-seahorse-batch-workflow-executor" id="markdown-toc-how-to-run-seahorse-batch-workflow-executor">How to Run Seahorse Batch Workflow Executor</a>    <ul>
+  <li><a href="#how-to-run-seahorse-batch-workflow-executor" id="markdown-toc-how-to-run-seahorse-batch-workflow-executor">How to Run Analytical Engine Batch Workflow Executor</a>    <ul>
       <li><a href="#local-apache-spark-single-machine" id="markdown-toc-local-apache-spark-single-machine">Local Apache Spark (single machine)</a></li>
       <li><a href="#apache-spark-standalone-cluster" id="markdown-toc-apache-spark-standalone-cluster">Apache Spark Standalone Cluster</a></li>
       <li><a href="#yarn-cluster" id="markdown-toc-yarn-cluster">YARN Cluster</a></li>
@@ -119,11 +119,11 @@
   </li>
   <li><a href="#custom-jdbc-drivers" id="markdown-toc-custom-jdbc-drivers">Custom JDBC Drivers</a></li>
   <li><a href="#using-sdk" id="markdown-toc-using-sdk">Using SDK</a></li>
-  <li><a href="#seahorse-batch-workflow-executor-command-line-parameters" id="markdown-toc-seahorse-batch-workflow-executor-command-line-parameters">Seahorse Batch Workflow Executor Command Line Parameters</a>    <ul>
+  <li><a href="#seahorse-batch-workflow-executor-command-line-parameters" id="markdown-toc-seahorse-batch-workflow-executor-command-line-parameters">Analytical Engine Batch Workflow Executor Command Line Parameters</a>    <ul>
       <li><a href="#command-line-parameters-details" id="markdown-toc-command-line-parameters-details">Command Line Parameters Details</a></li>
     </ul>
   </li>
-  <li><a href="#seahorse-batch-workflow-executor-logs" id="markdown-toc-seahorse-batch-workflow-executor-logs">Seahorse Batch Workflow Executor Logs</a></li>
+  <li><a href="#seahorse-batch-workflow-executor-logs" id="markdown-toc-seahorse-batch-workflow-executor-logs">Analytical Engine Batch Workflow Executor Logs</a></li>
 </ul>
 
 <h2 id="overview">Overview</h2>
@@ -131,26 +131,26 @@
 <p>Production-ready workflows can be exported as standalone
 Apache Spark applications and executed on any cluster in a batch mode.</p>
 
-<p>Seahorse Batch Workflow Executor is an Apache Spark
+<p>Analytical Engine Batch Workflow Executor is an Apache Spark
 application that allows you to execute standalone workflows.
-This functionality can facilitate integration of Seahorse with other data processing systems
-and manage the execution of workflows outside of Seahorse Editor.</p>
+This functionality can facilitate integration of Analytical Engine with other data processing systems
+and manage the execution of workflows outside of Analytical Engine Editor.</p>
 
 <div class="centered-container">
   <p><img src="../img/batch_overview.png" alt="Seahorse Batch Workflow Executor Overview" class="centered-image img-responsive" />
-  <em>Seahorse Batch Workflow Executor Overview</em></p>
+  <em>Analytical Engine Batch Workflow Executor Overview</em></p>
 </div>
 
-<h2 id="get-seahorse-batch-workflow-executor">Get Seahorse Batch Workflow Executor</h2>
+<h2 id="get-seahorse-batch-workflow-executor">Get Analytical Engine Batch Workflow Executor</h2>
 
-<p>Seahorse Batch Workflow Executor is available in a form of both precompiled binaries and source code.</p>
+<p>Analytical Engine Batch Workflow Executor is available in a form of both precompiled binaries and source code.</p>
 
 <h4 id="use-precompiled-binaries">Use Precompiled Binaries</h4>
 
 <table>
   <tbody>
     <tr>
-      <td><strong>Seahorse Batch Workflow Executor Version</strong></td>
+      <td><strong>Analytical Engine Batch Workflow Executor Version</strong></td>
       <td><strong>Apache Spark Version</strong></td>
       <td><strong>Scala Version</strong></td>
       <td><strong>Link</strong></td>
@@ -166,15 +166,14 @@ and manage the execution of workflows outside of Seahorse Editor.</p>
 
 <h4 id="build-from-source">Build from Source</h4>
 
-<p>If you are interested in compiling Seahorse Batch Workflow Executor from source
+<p>If you are interested in compiling Analytical Engine Batch Workflow Executor from source
 you can check out our Git repository:</p>
 
-<pre><code>git clone https://github.com/deepsense-ai/seahorse
-</code></pre>
 
-<h2 id="how-to-run-seahorse-batch-workflow-executor">How to Run Seahorse Batch Workflow Executor</h2>
 
-<p>Seahorse Batch Workflow Executor can be submitted to an Apache Spark cluster as any other Apache Spark application.
+<h2 id="how-to-run-seahorse-batch-workflow-executor">How to Run Analytical Engine Batch Workflow Executor</h2>
+
+<p>Analytical Engine Batch Workflow Executor can be submitted to an Apache Spark cluster as any other Apache Spark application.
 For more detailed information about submitting Apache Spark applications visit
 <a target="_blank" href="https://spark.apache.org/docs/2.0.2/submitting-applications.html">https://spark.apache.org/docs/2.0.2/submitting-applications.html</a></p>
 
@@ -240,7 +239,7 @@ For more detailed information about submitting Apache Spark applications visit
 <p>Option <code>--custom-code-executors-path</code> is required (<code>workflowexecutor.jar</code> contains PyExecutor and RExecutor).
 Option <code>--files workflow.json</code> is necessary to distribute workflow file within the Apache Spark cluster.
 It is necessary to pass the same filename to <code>--workflow-filename workflow.json</code> option,
-in order to tell Seahorse Batch Workflow Executor under which name it should look for a workflow file.</p>
+in order to tell Analytical Engine Batch Workflow Executor under which name it should look for a workflow file.</p>
 
 <p>If <code>spark-assembly-2.0.2-hadoop2.7.0.jar</code> is already distributed
 on HDFS cluster, it is possible to reduce the time necessary for files propagation on the YARN cluster. Use the <code>spark-submit</code> option
@@ -289,12 +288,12 @@ This requirement can be satisfied by:</p>
   </li>
 </ul>
 
-<p>To specify Seahorse SDK jar during execution, use <code>spark-submit</code>&#8217;s option
+<p>To specify Analytical Engine SDK jar during execution, use <code>spark-submit</code>&#8217;s option
 <code>--driver-class-path</code>, e.g. <code>--driver-class-path "path/to/skd1.jar:path/to/sdk2.jar:workflowexecutor.jar"</code>.
 For more information, please visit
 <a target="_blank" href="https://spark.apache.org/docs/2.0.2/configuration.html#runtime-environment">Apache Spark documentation</a>.</p>
 
-<h2 id="seahorse-batch-workflow-executor-command-line-parameters">Seahorse Batch Workflow Executor Command Line Parameters</h2>
+<h2 id="seahorse-batch-workflow-executor-command-line-parameters">Analytical Engine Batch Workflow Executor Command Line Parameters</h2>
 
 <p>Detailed information about command line parameters can be obtained by executing command:</p>
 
@@ -345,7 +344,7 @@ if variable name or value contains special characters (e.g. space),
 it has to be surrounded by quotation marks (“”).</li>
 </ul>
 
-<h2 id="seahorse-batch-workflow-executor-logs">Seahorse Batch Workflow Executor Logs</h2>
+<h2 id="seahorse-batch-workflow-executor-logs">Analytical Engine Batch Workflow Executor Logs</h2>
 
 <p>Depending on Apache Spark application deployment mode and cluster configuration, execution logs can be
 redirected to several locations, e.g.:</p>
@@ -378,10 +377,8 @@ for Apache Spark Standalone cluster, visit:
   </div>
 
   <footer class="col-sm-12">
-    <p class="text-center footer-text">Seahorse by <a href="https://deepsense.ai/" target="_blank"><span>deep</span>sense<span>.ai</span></a> | 2017 |
-          <a target="_blank" href="https://twitter.com/deepsense_ai/"><img src="../img/twitter.png" height="35px"></a>
-          <a target="_blank" href="https://github.com/deepsense-ai/seahorse"><img src="../img/octocat.png" height="25px"></a>
-          <a target="_blank" href="https://community.seahorse.deepsense.ai/"><img src="../img/discourse.png" height="25px"></a>
+    <p class="text-center footer-text">Analytical Engine by <a href="https://www.6dtechnologies.com/" target="_blank"><span>6d</span>technologies<span>.com</span></a> | 2024
+         
     </p>
   </footer>
 </body>
